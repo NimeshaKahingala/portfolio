@@ -1,0 +1,42 @@
+.progress_inner {
+    margin-bottom: 17px;
+    width: 100%; 
+
+    .background {
+        position: relative;
+        height: 3px;
+        width: 100%;
+        min-width: 100%;
+        background-color: rgba(0,0,0,.09);
+
+        .bar {
+            position: relative;
+            height: 100%;
+            width: 100%;
+
+            .bar_in {
+                background-color: black;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                bottom: 0px;
+                overflow: hidden;
+                opacity: 1;
+            }
+        }
+    }
+
+    .details {
+        margin-bottom: 5px;
+        display: block;
+        width: 100%;
+        text-align: left;
+        .label {
+
+        }
+
+        .number {
+            float: right;
+        }
+    }
+}

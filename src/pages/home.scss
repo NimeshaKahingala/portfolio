@@ -1,0 +1,62 @@
+.home-page {
+    font-family: Montserrat, sans-serif;
+
+    .container {
+        padding: 0 20px 20px 20px;
+
+        .content {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+
+            .avatar {
+                background-image: url(../images/Nimesha.jpeg);
+                background-size: contain;
+                background-repeat: no-repeat;
+                border-radius: 100%;
+                //filter :grayscale(100%);
+                height: 200px;
+                width: 200px;
+
+                animation: morph 8s ease-in-out infinite 1s;
+                background-blend-mode: multiply;
+
+                &:hover {
+                    filter :grayscale(0%);
+                }
+            }
+
+            .details {
+                .job {
+                    color: #767676;
+                    font-size: 15px;
+                    font-weight: 500;
+                    margin-bottom: 22px;
+                }
+
+                .name {
+                    font-size: 25px;
+                    font-weight: 800;
+                    margin-bottom: 10px;
+                }
+
+                .social {
+                    ul {
+                        align-items: center;
+                        display: flex;
+                        place-content: center;
+
+                        li {
+                            cursor: pointer;
+                            margin: 0 6px;
+
+                            .icon {
+                                width: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

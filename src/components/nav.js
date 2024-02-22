@@ -1,21 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/Logo.svg";
-import './Nav.scss';
+import './nav.scss';
 
-function Nav() {
+function Nav(props) {
+
+    const btnOnClick = () => {
+        props.setIsMenuActive(false)
+    }
+
     return <>
-        <nav className="container nav-bar">
+        <nav className={`nav-bar ${props.isMenuActive ? "opened" : ""}`}>
             <div className="container">
-            <div className="logo-wrap"><img src={logo} alt="logo" className="logo"></img></div>
-            {/* <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/about">About</Link></li>
-                <li><Link to="/menu">Menu</Link></li>
-                <li><Link to="/booking">Reservation</Link></li>
-                <li><Link to="/order">Order Online</Link></li>
-                <li><Link to="/login">Login</Link></li>
-            </ul> */}
+                <ul>
+                    <li><Link to="/" onClick={btnOnClick}>Home</Link></li>
+                    <li><Link to="/about" onClick={btnOnClick}>About</Link></li>
+                    <li><Link to="/portfolio" onClick={btnOnClick}>Portfolio</Link></li>
+                    <li><Link to="/contact" onClick={btnOnClick}>Contact</Link></li>
+                </ul>
             </div>
         </nav>
     </>

@@ -1,0 +1,72 @@
+.header {
+    background-color: white;
+    height: 60px;
+    position: fixed;
+    width: 100%;
+
+    .header-inner {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+
+        .hamburger {
+            position: relative;
+            display: inline-block;
+            width: 30px;
+            height: 24px;
+            .hamburger-inner {
+                position: absolute;
+                display: inline-block;
+                width: 30px;
+                height: 2px;
+                top: 2px;
+                position: absolute;
+                width: 40px;
+                height: 2px;
+                transition-timing-function: ease;
+                transition-duration: 0.15s;
+                transition-property: transform;
+                border-radius: 4px;
+                display: block;
+                margin-top: -2px;
+                background-color: #000;
+
+                &::before {
+                    width: 30px;
+                    display: block;
+                    content: "";
+                    height: 2px;
+                    top: 10px;
+                    transition-timing-function: ease;
+                    transition-duration: 0.15s;
+                    transition-property: transform, opacity;
+                    width: 30px;
+                    height: 2px;
+                    border-radius: 4px;
+                    background-color: #000;
+                    box-sizing: border-box;
+                    border-width: 0;
+                    border-style: solid;
+                    border-color: #e5e7eb;
+                    opacity: 1;
+                }
+
+                &::after {
+                    top: 20px;
+                    bottom: -10px;
+                    display: block;
+    content: "";
+    position: absolute;
+    transition-timing-function: ease;
+    transition-duration: 0.15s;
+    transition-property: transform;
+    border-radius: 4px;
+    background-color: #000;
+                }
+            }
+        }
+
+        .logo {}
+    }
+}

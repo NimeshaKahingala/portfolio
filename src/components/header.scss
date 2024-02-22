@@ -2,6 +2,7 @@
     background-color: white;
     height: 60px;
     position: fixed;
+    padding: 10px 0;
     width: 100%;
     z-index: 10;
 
@@ -9,66 +10,85 @@
         align-items: center;
         display: flex;
         justify-content: space-between;
+        height: 40px;
         padding: 0 20px;
 
         .hamburger {
-            position: relative;
+            cursor: pointer;
             display: inline-block;
-            width: 30px;
+            position: relative;
             height: 24px;
+            width: 30px;
 
             .hamburger-inner {
-                position: absolute;
-                display: inline-block;
-                width: 30px;
+                background-color: #000;
+                border-radius: 4px;
+                display: block;
                 height: 2px;
+                margin-top: -2px;
+                position: absolute;
                 top: 2px;
-                position: absolute;
-                width: 40px;
-                height: 2px;
                 transition-timing-function: ease;
                 transition-duration: 0.15s;
                 transition-property: transform;
-                border-radius: 4px;
-                display: block;
-                margin-top: -2px;
-                background-color: #000;
+                width: 30px;
 
                 &::before {
-                    width: 30px;
-                    display: block;
-                    content: "";
-                    height: 2px;
-                    top: 10px;
-                    transition-timing-function: ease;
-                    transition-duration: 0.15s;
-                    transition-property: transform, opacity;
-                    width: 30px;
-                    height: 2px;
                     border-radius: 4px;
                     background-color: #000;
                     box-sizing: border-box;
                     border-width: 0;
                     border-style: solid;
                     border-color: #e5e7eb;
+                    content: "";
+                    display: block;
+                    height: 2px;
                     opacity: 1;
+                    position: absolute;
+                    top: 10px;
+                    transition-timing-function: ease;
+                    transition-duration: 0.15s;
+                    transition-property: transform, opacity;
+                    width: 30px;
                 }
 
                 &::after {
-                    top: 20px;
+                    border-radius: 4px;
+                    background-color: #000;
                     bottom: -10px;
-                    display: block;
                     content: "";
+                    display: block;
+                    height: 2px;
                     position: absolute;
                     transition-timing-function: ease;
                     transition-duration: 0.15s;
                     transition-property: transform;
-                    border-radius: 4px;
+                    top: 20px;
+                    width: 30px;
+                }
+            }
+
+            &.is-active {
+                .hamburger-inner{
                     background-color: #000;
+                    transform: translate3d(0, 10px, 0) rotate(45deg);
+
+                    &:before {
+                        transform: rotate(-45deg) translate3d(-5.71429px, -6px, 0);
+                        opacity: 0;
+                    }
+
+                    &:after {
+                        transform: translate3d(0, -20px, 0) rotate(-90deg);
+                    }
                 }
             }
         }
 
-        .logo {}
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 4px;
+        }
     }
 }

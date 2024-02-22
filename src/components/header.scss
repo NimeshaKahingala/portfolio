@@ -3,6 +3,7 @@
     height: 60px;
     position: fixed;
     width: 100%;
+    z-index: 10;
 
     .header-inner {
         align-items: center;
@@ -15,6 +16,7 @@
             display: inline-block;
             width: 30px;
             height: 24px;
+
             .hamburger-inner {
                 position: absolute;
                 display: inline-block;
@@ -56,13 +58,13 @@
                     top: 20px;
                     bottom: -10px;
                     display: block;
-    content: "";
-    position: absolute;
-    transition-timing-function: ease;
-    transition-duration: 0.15s;
-    transition-property: transform;
-    border-radius: 4px;
-    background-color: #000;
+                    content: "";
+                    position: absolute;
+                    transition-timing-function: ease;
+                    transition-duration: 0.15s;
+                    transition-property: transform;
+                    border-radius: 4px;
+                    background-color: #000;
                 }
             }
         }

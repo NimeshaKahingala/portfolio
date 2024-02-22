@@ -1,8 +1,9 @@
 .home-page {
     font-family: Montserrat, sans-serif;
+    padding-top: 60px;
 
     .container {
-        padding: 0 20px 20px 20px;
+        padding: 30px 20px 20px 20px;
 
         .content {
             align-items: center;
@@ -27,6 +28,8 @@
             }
 
             .details {
+                padding-top: 30px;
+                
                 .job {
                     color: #767676;
                     font-size: 15px;

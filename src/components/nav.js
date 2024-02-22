@@ -8,14 +8,14 @@ function Nav() {
         <nav className="container nav-bar">
             <div className="container">
             <div className="logo-wrap"><img src={logo} alt="logo" className="logo"></img></div>
-            <ul>
+            {/* <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About</Link></li>
                 <li><Link to="/menu">Menu</Link></li>
                 <li><Link to="/booking">Reservation</Link></li>
                 <li><Link to="/order">Order Online</Link></li>
                 <li><Link to="/login">Login</Link></li>
-            </ul>
+            </ul> */}
             </div>
         </nav>
     </>

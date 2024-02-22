@@ -1,6 +1,7 @@
 .about-page {
     font-family: Montserrat, sans-serif;
     font-size: 15px;
+    text-align: left;
 
     .about-section {
         background-color: #f8f8f8;
@@ -81,10 +82,6 @@
             }
         }
 
-        .sub-title {
-            font-size: 20px;
-        }
-
         .title {
             font-size: 30px;
             font-weight: 800;
@@ -95,5 +92,98 @@
 
     .container {
         padding: 0 20px 80px 20px;
+    }
+
+    .experience-section, .education-section {
+
+        ul {
+            position: relative;
+            display: inline-block;
+            list-style: none;
+
+            li {
+                position: relative;
+                padding: 0 0 45px 20px;
+
+                .list-inner {
+                    display: flex;
+                    .place {
+                        padding-left: 10px;
+                        width: 50%;
+
+                        h3 {
+                            font-size: 16px;
+                            font-weight: 600;
+                        }
+
+                        span {
+                            font-size: 14px;
+                        }
+                    }
+
+                    .time {
+                        background-color: rgba(0,0,0,.05);
+                        border-radius: 50px;
+                        display: inline-block;
+                        height: 40px;
+                        padding: 8px 27px;
+                        margin-right: 20px;
+                        white-space: nowrap;
+                        width: 50%;
+                    }
+                }
+                &::before {
+                    content: "";
+                    position: absolute;
+                    height: 18px;
+                    width: 18px;
+                    background: #fff;
+                    border-radius: 100%;
+                    border: solid 1px #CCC;
+                    left: -9px;
+                    top: 8px;
+                }
+            }
+
+            li:last-child {
+                padding-bottom: 0;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                width: 1px;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background-color: rgba(0,0,0,.07);
+            }
+        }
+    }
+
+    .knowledge-section {
+        text-align: left;
+
+        .skills {
+            font-family: Mulish, sans-serif;
+
+            ul {
+                li {
+                    padding-left: 25px;
+                }
+            }
+        }
+    }
+
+    .skill-section {
+        .progress {
+            font-family: Mulish, sans-serif;
+        }
+    }
+
+    .sub-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 30px;
     }
 }

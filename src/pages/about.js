@@ -55,18 +55,77 @@ function About() {
             <div className="skill-section">
                 <div className="container">
                     <h3 className="sub-title">Programming Skills</h3>
-                    <div class="tokyo_progress">
+                    <div class="progress">
                         <ProgressBar skill="HTML" number="95"/>
                         <ProgressBar skill="CSS" number="95"/>
                         <ProgressBar skill="JavaScript" number="85"/>
                         <ProgressBar skill="React" number="80"/>
                     </div>
                     <h3 className="sub-title">Technical Skills</h3>
-                    <div class="tokyo_progress">
+                    <div class="progress">
                         <ProgressBar skill="Git" number="90"/>
                         <ProgressBar skill="CSS" number="95"/>
                         <ProgressBar skill="JavaScript" number="85"/>
                         <ProgressBar skill="React" number="80"/>
+                    </div>
+                </div>
+            </div>
+            <div className="knowledge-section">
+                <div className="container">
+                    <h3 className="sub-title">Knowledge</h3>
+                    <div className="skills">
+                        <ul>
+                            <li>Bootstrap, Angular</li>
+                            <li>Bootstrap, Angular</li>
+                            <li>Bootstrap, Angular</li>
+                            <li>Bootstrap, Angular</li>
+                            <li>Bootstrap, Angular</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div className="experience-section">
+                <div className="container">
+                    <h3 className="sub-title">Experience</h3>
+                    <div className="content">
+                        <ul>
+                            <li>
+                                <div className="list-inner">
+                                    <div className="time">2020 - 2023</div>
+                                    <div className="place">
+                                        <h3>1Billion Technology</h3>
+                                        <span>Software Engineer - UI</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="list-inner">
+                                    <div className="time">2019 - 2020</div>
+                                    <div className="place">
+                                        <h3>eBEYONDS pvt ltd</h3>
+                                        <span>UI/UX Engineer - inten</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div className="education-section">
+                <div className="container">
+                    <h3 className="sub-title">Education</h3>
+                    <div className="content">
+                        <ul>
+                            <li>
+                                <div className="list-inner">
+                                    <div className="time">2016 - 2020</div>
+                                    <div className="place">
+                                        <h3>Universityof Colombo School of Computing</h3>
+                                        <span>Bachelor Degree</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

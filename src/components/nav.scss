@@ -4,6 +4,9 @@
     height: calc(100vh - 60px);
     position: fixed;
     right: -200px;
+    transition-duration: 300ms;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     width: 200px;
 
     .container {

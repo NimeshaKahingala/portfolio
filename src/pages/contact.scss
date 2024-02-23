@@ -1,0 +1,37 @@
+.contact-page {
+    background-color: #f8f8f8;
+    font-family: Montserrat, sans-serif;
+    height: 100vh;
+    padding-top: 60px;
+    text-align: left;
+
+    .container {
+        padding: 30px 20px 40px 20px;
+
+        .details {
+            padding: 30px 0;
+
+            ul {
+                li {
+                    a {
+                        img {
+                            margin-bottom: 10px;
+                            width: 25px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .title {
+            font-size: 30px;
+            font-weight: 800;
+            font-family: Montserrat, sans-serif;
+            margin-bottom: 30px;
+        }
+
+        .text {
+
+        }
+    }
+}

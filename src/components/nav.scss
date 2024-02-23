@@ -25,3 +25,22 @@
         right: 0;
     }
 }
+
+@media only screen and (min-width: 768px) {
+    .nav-bar {
+        left: 0;
+        height: 100vh;
+        top: 0;
+        width: 300px;
+
+        .container {
+            padding: 130px 20px 0 60px;
+
+            ul {
+                li {
+                    text-align: left;
+                }
+            }
+        }
+    }
+}

@@ -35,3 +35,13 @@
         }
     }
 }
+
+@media only screen and (min-width:768px) {
+    .contact-page {
+        padding-left: 300px;
+
+        .container {
+            padding: 40px 60px 40px 60px;
+        }
+    }
+}

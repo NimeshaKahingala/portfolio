@@ -1,7 +1,6 @@
 .about-page {
     font-family: Montserrat, sans-serif;
     font-size: 15px;
-    padding-top: 60px;
     text-align: left;
 
     .about-section {
@@ -34,7 +33,7 @@
             font-size: 15px;
             font-weight: 400;
             line-height: 30px;
-            text-align: left;
+            text-align: justify;
 
             p {
                 margin-bottom: 11px;
@@ -92,7 +91,7 @@
     }
 
     .container {
-        padding: 40px 20px 80px 20px;
+        padding: 100px 20px 80px 20px;
     }
 
     .experience-section, .education-section {
@@ -186,5 +185,15 @@
         font-size: 20px;
         font-weight: 700;
         margin-bottom: 30px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .about-page {
+        padding-left: 300px;
+
+        .container {
+            padding: 100px 60px 40px 60px;
+        }
     }
 }

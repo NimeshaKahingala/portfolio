@@ -9,6 +9,7 @@ function Contact() {
     return (
         <div className="contact-page">
             <div className="container">
+            <div className="section-name">Contact</div>
                 <h3 className="title">Get in Touch</h3>
                 <div className="text">It all starts with a discussion, please feel free to contact me through</div>
                 <div className="details">

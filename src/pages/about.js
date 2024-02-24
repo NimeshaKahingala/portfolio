@@ -8,6 +8,7 @@ function About() {
         <div className="about-page">
             <div className="about-section">
                 <div className="container">
+                    <div className="section-name">About</div>
                     <div className="title">About Me</div>
                     <div className="image"></div>
                     <div className="about-title">

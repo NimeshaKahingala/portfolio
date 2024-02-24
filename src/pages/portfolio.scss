@@ -2,6 +2,7 @@
     background-color: #f8f8f8;
     font-family: Montserrat, sans-serif;
     padding-top: 60px;
+    text-align: left;
 
     .container {
         padding: 40px 20px 80px 20px;
@@ -44,12 +45,23 @@
             }
         }
 
+        .section-name {
+            background-color: rgba(0,0,0,.04);
+            color: #333;
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: Montserrat, sans-serif;
+            margin-bottom: 11px;
+            padding: 10px;
+            text-transform: uppercase;
+        }
+
         .title {
             font-size: 30px;
             font-weight: 800;
             font-family: Montserrat, sans-serif;
             margin-bottom: 30px;
-            text-align: left;
         }
     }
 }

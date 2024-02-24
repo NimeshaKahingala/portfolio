@@ -7,6 +7,7 @@ function Portfolio() {
     return (
         <div className="portfolio-page">
             <div className="container">
+            <div className="section-name">portfolio</div>
                 <h3 className="title">Selected Portfolios</h3>
                 <div className="list-wrapper">
                     <ul className="portfolio-list">

@@ -175,6 +175,18 @@
         }
     }
 
+    .section-name {
+        background-color: rgba(0,0,0,.04);
+        color: #333;
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        font-family: Montserrat, sans-serif;
+        margin-bottom: 11px;
+        padding: 10px;
+        text-transform: uppercase;
+    }
+
     .skill-section {
         .progress {
             font-family: Mulish, sans-serif;

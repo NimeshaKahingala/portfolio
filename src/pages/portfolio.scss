@@ -25,12 +25,14 @@
                                 text-align: left;
                             }
 
-                            .image {
-                                background-size: cover;
-                                background-repeat: no-repeat;
-                                background-position-x: center;
-                                min-height: 232px;
-                                width: 100%;
+                            .image-wrap {
+                                .image {
+                                    background-size: cover;
+                                    background-repeat: no-repeat;
+                                    background-position-x: center;
+                                    min-height: 232px;
+                                    width: 100%;
+                                }
                             }
 
                             .read-more-text {
@@ -46,7 +48,7 @@
         }
 
         .section-name {
-            background-color: rgba(0,0,0,.04);
+            background-color: rgba(0, 0, 0, .04);
             color: #333;
             display: inline-block;
             font-size: 12px;
@@ -72,6 +74,50 @@
 
         .container {
             padding: 40px 60px 40px 60px;
+
+            .list-wrapper {
+                .portfolio-list {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .portfolio {
+                        width: 49%;
+
+                        .inner {
+                            height: 430px;
+
+                            .image-wrap {
+                                margin: auto;
+                                padding-top: 20px;
+                                width: 88%;
+                                transition-property: all;
+                                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                                transition-duration: 300ms;
+
+                                .image {
+                                    border-radius: 12px;
+                                    filter: grayscale(100%);
+                                }
+                            }
+                        }
+
+                        &:hover,
+                        &:active,
+                        &:focus {
+                            .inner {
+                                .image-wrap {
+                                    transform: scale(1.1) translateZ(0);
+
+                                    .image {
+                                        filter: grayscale(0%);
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
         }
     }
 }

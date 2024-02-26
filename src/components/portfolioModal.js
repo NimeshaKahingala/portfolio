@@ -1,15 +1,18 @@
 import React from 'react';
+import { PROJECTS } from "../components/data";
 
-function PortfolioModal() {
+function PortfolioModal(props) {
 
-  return (
-    <>
-      <div className='modal-wrap'>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        </div>
-    </>
-  );
+    return (
+        <>
+
+            <div className='modal-wrap'>
+                <p>{props.data?.title}</p>
+                <p>{props.data?.description}</p>
+            </div>
+
+
+        </>
+    );
 };
 export default PortfolioModal;

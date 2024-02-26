@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import { Modal } from 'antd';
+import PortfolioModal from "../components/portfolioModal";
 import "./portfolio.scss";
 import msImage from "../images/millionSpaces.png";
 import goldenGateImage from "../images/goldenGate.PNG";
 
 function Portfolio() {
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+    const handleOk = () => {
+        setIsModalOpen(false);
+    };
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
+
+
     return (
         <div className="portfolio-page">
             <div className="container">
@@ -11,9 +26,10 @@ function Portfolio() {
                 <h3 className="title">Selected Portfolios</h3>
                 <div className="list-wrapper">
                     <ul className="portfolio-list">
-                        <li className="portfolio">
+                        <li className="portfolio" onClick={showModal}>
                             <div className="inner">
-                                <a href="https://millionspaces.com/Singapore" target="blank">
+                                {/* <a href="https://millionspaces.com/Singapore" target="blank"> */}
+                                <a>
                                     <div className="image-wrap">
                                         <div className="image" style={{ backgroundImage: `url(${msImage})` }}></div>
                                     </div>
@@ -25,9 +41,10 @@ function Portfolio() {
                                 </a>
                             </div>
                         </li>
-                        <li className="portfolio">
+                        <li className="portfolio" onClick={showModal}>
                             <div className="inner">
-                                <a href="https://thegoldengate.uk/" target="blank">
+                                {/* <a href="https://thegoldengate.uk/" target="blank"> */}
+                                <a >
                                     <div className="image-wrap">
                                         <div className="image" style={{ backgroundImage: `url(${goldenGateImage})` }}></div>
                                     </div>
@@ -41,6 +58,13 @@ function Portfolio() {
                         </li>
                     </ul>
                 </div>
+                <Modal
+                    open={isModalOpen}
+                    onOk={handleOk}
+                    onCancel={handleCancel}
+                    footer={null}>
+                        <PortfolioModal/>
+                </Modal>
             </div>
         </div>
     )

@@ -56,7 +56,8 @@ function Portfolio() {
                     open={isModalOpen}
                     onOk={handleOk}
                     onCancel={handleCancel}
-                    footer={null}>
+                    footer={null}
+                    className="portfolio-modal">
                     <PortfolioModal data={selectedProject}/>
                 </Modal>
             </div>

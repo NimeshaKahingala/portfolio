@@ -1,0 +1,50 @@
+.portfolio-modal {
+    font-family: Montserrat, sans-serif;
+
+    .modal-wrap {
+        .description {
+            font-size: 14px;
+            padding-bottom: 10px;
+        }
+
+        .img-wrap {
+
+        }
+
+        .title {
+            font-size: 23px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .technology {
+            font-size: 16px;
+            font-weight: 600;
+            padding-bottom: 6px;
+
+            span {
+                font-weight: 700;
+            }
+        }
+
+        .url {
+            font-weight: 500;
+
+            .link {
+                color: #286fd6;
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px){
+    .portfolio-modal {
+        width: calc(100vw - 400px) !important;
+
+        .ant-modal-content {
+            padding: 50px;
+        }
+    }
+}

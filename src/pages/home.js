@@ -10,7 +10,7 @@ function Home() {
         <div className="home-page">
             <div className="container">
                 <div className="content">
-                    <div className="avatar"></div>
+                    <div className="avatar"><div className="image"></div></div>
                     <div className="details">
                         <h3 className="name">NIMESHA KAHINGALA</h3>
                         <p className="job">Welcome! I’m Nimesha, a dynamic Front-End Developer with a flair for crafting compelling, user-first digital experiences. Armed with a Meta Front-End Developer Professional Certificate and over three years of hands-on experience, I thrive on utilizing HTML5, CSS3, JavaScript (ES6+), and cutting-edge frameworks like React and Redux to solve complex problems and create intuitive, accessible web applications. My journey has led me across continents, from the vibrant tech hubs of the United States and Singapore to my roots in Sri Lanka, allowing me to cultivate a unique blend of global insights and innovative approaches. Let’s embark on a journey to transform your digital ideas into reality!</p>

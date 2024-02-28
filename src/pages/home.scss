@@ -13,25 +13,34 @@
             flex-direction: column;
 
             .avatar {
-                background-image: url(../images/Nimesha.jpeg);
-                background-size: contain;
-                background-repeat: no-repeat;
-                border-radius: 100%;
-                //filter :grayscale(100%);
-                height: 200px;
-                width: 200px;
+                min-height: 200px;
+                min-width: 200px;
+                position: relative;
 
-                animation: morph 8s ease-in-out infinite 1s;
-                background-blend-mode: multiply;
+                .image {
+                    animation: wave 8s ease-in-out infinite 1s;
+                    background-image: url(../images/Nimesha.jpeg);
+                    background-blend-mode: multiply;
+                    box-shadow: inset 0px 0px 0px 9px rgba(255, 255, 255, .3);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                    bottom: 0px;
+                    filter: grayscale(100%);
+                    left: 0px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
 
-                &:hover {
-                    filter :grayscale(0%);
+                    &:hover {
+                        filter: grayscale(0%);
+                    }
                 }
             }
 
             .details {
                 padding-top: 30px;
-                
+
                 .job {
                     color: #767676;
                     font-size: 15px;
@@ -83,7 +92,9 @@
                 flex-direction: row;
 
                 .avatar {
-                    min-width: 200px;
+                    border-radius: 9999px;
+                    min-height: 250px;
+                    min-width: 250px;
                 }
 
                 .details {
@@ -95,5 +106,19 @@
                 }
             }
         }
+    }
+}
+
+@keyframes wave {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     }
 }

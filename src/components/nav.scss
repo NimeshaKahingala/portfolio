@@ -34,7 +34,10 @@
         width: 300px;
 
         .container {
-            padding: 130px 20px 0 60px;
+            align-items: center;
+            display: flex;
+            height: 100vh;
+            padding: 0 20px 0 60px;
 
             ul {
                 li {
@@ -42,5 +45,11 @@
                 }
             }
         }
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .nav-bar {
+        width: 400px !important;
     }
 }

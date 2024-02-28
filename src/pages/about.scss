@@ -204,8 +204,16 @@
     .about-page {
         padding-left: 300px;
 
+        .about-section {
+            .image {
+                background-position: left;
+            }
+        }
+
         .container {
             padding: 100px 60px 40px 60px;
+            max-width: 1070px;
+            margin: auto;
         }
     }
 }

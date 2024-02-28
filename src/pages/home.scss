@@ -70,9 +70,30 @@
 @media only screen and (min-width: 768px) {
     .home-page {
         padding-left: 300px;
+        padding-top: 0;
 
         .container {
+            display: flex;
+            height: 100vh;
+            max-width: 1070px;
+            margin: auto;
             padding: 40px 60px 40px 60px;
+
+            .content {
+                flex-direction: row;
+
+                .avatar {
+                    min-width: 200px;
+                }
+
+                .details {
+                    margin-left: 50px;
+
+                    .name {
+                        font-size: 55px;
+                    }
+                }
+            }
         }
     }
 }

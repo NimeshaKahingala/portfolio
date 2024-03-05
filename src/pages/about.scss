@@ -169,7 +169,12 @@
 
             ul {
                 li {
-                    padding-left: 25px;
+                    display: flex;
+
+                    img {
+                        left: -10px;
+                        position: relative;
+                    }
                 }
             }
         }

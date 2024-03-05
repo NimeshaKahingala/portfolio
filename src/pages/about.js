@@ -2,6 +2,7 @@ import React from "react";
 import cv from "../images/cv.pdf";
 import "./about.scss";
 import ProgressBar from "../components/progressBar";
+import arrowIcon from "../images/arrow_right.svg";
 
 function About() {
     return (
@@ -57,17 +58,17 @@ function About() {
                 <div className="container">
                     <h3 className="sub-title">Programming Skills</h3>
                     <div class="progress">
-                        <ProgressBar skill="HTML" number="95"/>
-                        <ProgressBar skill="CSS" number="95"/>
-                        <ProgressBar skill="JavaScript" number="85"/>
-                        <ProgressBar skill="React" number="80"/>
+                        <ProgressBar skill="HTML" number="95" />
+                        <ProgressBar skill="CSS" number="95" />
+                        <ProgressBar skill="JavaScript" number="85" />
+                        <ProgressBar skill="React" number="80" />
                     </div>
                     <h3 className="sub-title">Technical Skills</h3>
                     <div class="progress">
-                        <ProgressBar skill="Git" number="90"/>
-                        <ProgressBar skill="CSS" number="95"/>
-                        <ProgressBar skill="JavaScript" number="85"/>
-                        <ProgressBar skill="React" number="80"/>
+                        <ProgressBar skill="Git" number="90" />
+                        <ProgressBar skill="CSS" number="95" />
+                        <ProgressBar skill="JavaScript" number="85" />
+                        <ProgressBar skill="React" number="80" />
                     </div>
                 </div>
             </div>
@@ -76,11 +77,16 @@ function About() {
                     <h3 className="sub-title">Knowledge</h3>
                     <div className="skills">
                         <ul>
-                            <li>Bootstrap, Angular</li>
-                            <li>Bootstrap, Angular</li>
-                            <li>Bootstrap, Angular</li>
-                            <li>Bootstrap, Angular</li>
-                            <li>Bootstrap, Angular</li>
+                            <li><img src={arrowIcon}></img>Languages: HTML5, CSS3, JavaScript (ES6+)</li>
+                            <li><img src={arrowIcon}></img>Frameworks: React, Redux,</li>
+                            <li><img src={arrowIcon}></img>Libraries: Tailwind CSS, Bootstrap, Chakra UI, Material Design, Ant Design, React-md</li>
+                            <li><img src={arrowIcon}></img>Preprocessors: SASS, LESS</li>
+                            <li><img src={arrowIcon}></img>Version Control: Git, GitHub</li>
+                            <li><img src={arrowIcon}></img>Web Design: Responsive Design, Mobile-first Design</li>
+                            <li><img src={arrowIcon}></img>Tools & Build Systems: Webpack, Babel, NPM, Yarn</li>
+                            <li><img src={arrowIcon}></img>Layouts: Flexbox, CSS Grid</li>
+                            <li><img src={arrowIcon}></img>Performance: Website Performance Optimization</li>
+                            <li><img src={arrowIcon}></img>Cross-Browser Compatibility & Accessibility</li>
                         </ul>
                     </div>
                 </div>

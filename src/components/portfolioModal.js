@@ -1,6 +1,10 @@
 import React from 'react';
 import { PROJECTS } from "../components/data";
 import "./portfolioModal.scss";
+// import * as iconSrc from '../images';
+
+
+
 
 function PortfolioModal(props) {
 

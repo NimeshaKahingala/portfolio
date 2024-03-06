@@ -91,48 +91,50 @@ function About() {
                     </div>
                 </div>
             </div>
-            <div className="experience-section">
-                <div className="container">
-                    <h3 className="sub-title">Experience</h3>
-                    <div className="content">
-                        <ul>
-                            <li>
-                                <div className="list-inner">
-                                    <div className="time">2020 - 2023</div>
-                                    <div className="place">
-                                        <h3>1Billion Technology</h3>
-                                        <span>Software Engineer - UI</span>
+            <div className="experience-education-section">
+                <div className="left">
+                    <div className="container">
+                        <h3 className="sub-title">Experience</h3>
+                        <div className="content">
+                            <ul>
+                                <li>
+                                    <div className="list-inner">
+                                        <div className="time">2020 - 2023</div>
+                                        <div className="place">
+                                            <h3>1Billion Technology</h3>
+                                            <span>Software Engineer - UI</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="list-inner">
-                                    <div className="time">2019 - 2020</div>
-                                    <div className="place">
-                                        <h3>eBEYONDS pvt ltd</h3>
-                                        <span>UI/UX Engineer - inten</span>
+                                </li>
+                                <li>
+                                    <div className="list-inner">
+                                        <div className="time">2019 - 2020</div>
+                                        <div className="place">
+                                            <h3>eBEYONDS pvt ltd</h3>
+                                            <span>UI/UX Engineer - inten</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="education-section">
-                <div className="container">
-                    <h3 className="sub-title">Education</h3>
-                    <div className="content">
-                        <ul>
-                            <li>
-                                <div className="list-inner">
-                                    <div className="time">2016 - 2020</div>
-                                    <div className="place">
-                                        <h3>Universityof Colombo School of Computing</h3>
-                                        <span>Bachelor Degree</span>
+                <div className="right">
+                    <div className="container">
+                        <h3 className="sub-title">Education</h3>
+                        <div className="content">
+                            <ul>
+                                <li>
+                                    <div className="list-inner">
+                                        <div className="time">2016 - 2020</div>
+                                        <div className="place">
+                                            <h3>Universityof Colombo School of Computing</h3>
+                                            <span>Bachelor Degree</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

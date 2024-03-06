@@ -94,8 +94,7 @@
         padding: 100px 20px 80px 20px;
     }
 
-    .experience-section, .education-section {
-
+    .experience-education-section {
         ul {
             position: relative;
             display: inline-block;
@@ -107,6 +106,7 @@
 
                 .list-inner {
                     display: flex;
+
                     .place {
                         padding-left: 10px;
                         width: 50%;
@@ -122,7 +122,7 @@
                     }
 
                     .time {
-                        background-color: rgba(0,0,0,.05);
+                        background-color: rgba(0, 0, 0, .05);
                         border-radius: 50px;
                         display: inline-block;
                         height: 40px;
@@ -132,6 +132,7 @@
                         width: 50%;
                     }
                 }
+
                 &::before {
                     content: "";
                     position: absolute;
@@ -156,7 +157,7 @@
                 height: 100%;
                 top: 0;
                 left: 0;
-                background-color: rgba(0,0,0,.07);
+                background-color: rgba(0, 0, 0, .07);
             }
         }
     }
@@ -181,7 +182,7 @@
     }
 
     .section-name {
-        background-color: rgba(0,0,0,.04);
+        background-color: rgba(0, 0, 0, .04);
         color: #333;
         display: inline-block;
         font-size: 12px;
@@ -207,7 +208,7 @@
 
 @media only screen and (min-width: 768px) {
     .about-page {
-        padding-left: 300px;
+        padding-left: 400px;
 
         .about-section {
             .image {
@@ -219,6 +220,18 @@
             padding: 100px 60px 40px 60px;
             max-width: 1070px;
             margin: auto;
+        }
+
+        .experience-education-section {
+            display: flex;
+
+            .left {
+                width: 50%;
+            }
+
+            .right {
+                width: 50%;
+            }
         }
     }
 }

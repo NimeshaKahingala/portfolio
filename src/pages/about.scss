@@ -1,10 +1,12 @@
 .about-page {
+    color: #130f49;
     font-family: Montserrat, sans-serif;
     font-size: 15px;
     text-align: left;
 
     .about-section {
-        background-color: #f8f8f8;
+        //background-color: #f8f8f8;
+        background: #e9f9ff;
 
         .about-title {
             border-bottom-width: 1px;
@@ -26,7 +28,7 @@
         .about-text {
             border-bottom-width: 1px;
             border-style: solid;
-            color: #767676;
+           // color: #767676;
             margin-bottom: 30px;
             padding-bottom: 30px;
             font-family: Mulish, sans-serif;
@@ -41,10 +43,18 @@
         }
 
         .btn-cv {
-            background-color: black;
+            background-color: #130f49;
+            border: 1.5px solid #130f49;
+            border-radius: 4px;
             color: white;
-            padding: 10px 40px;
+            padding: 12px 40px;
+            transition: all 0.3s ease;
             width: fit-content;
+
+            &:hover {
+                background-color: transparent;
+                color: #55527c;
+            }
         }
 
         .image {
@@ -68,6 +78,7 @@
 
             li {
                 display: flex;
+                margin-bottom: 5px;
             }
 
             .info {
@@ -77,9 +88,9 @@
                 margin-right: 10px;
             }
 
-            .details {
-                color: #767676;
-            }
+            // .details {
+            //     color: #767676;
+            // }
         }
 
         .title {
@@ -230,10 +241,11 @@
 
             .container {
                 display: flex;
+
                 .left {
                     width: 50%;
                 }
-    
+
                 .right {
                     width: 50%;
                 }

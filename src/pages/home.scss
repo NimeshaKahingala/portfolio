@@ -1,7 +1,8 @@
 .home-page {
-    background: #f8f8f8;
+    //background: #f8f8f8;
+    background: #e9f9ff;
+    color: #130f49;
     font-family: Montserrat, sans-serif;
-    height: 100vh;
     padding-top: 60px;
 
     .container {
@@ -18,10 +19,11 @@
                 position: relative;
 
                 .image {
-                    animation: wave 8s ease-in-out infinite 1s;
+                    animation: wave 8s ease-in-out infinite 0s;
                     background-image: url(../images/Nimesha.jpeg);
                     background-blend-mode: multiply;
-                    box-shadow: inset 0px 0px 0px 9px rgba(255, 255, 255, .3);
+                    // box-shadow: inset 0px 0px 0px 9px rgba(255, 255, 255, .3);
+                    box-shadow: 0px 0px 0px 9px rgb(198 198 198 / 30%);
                     background-repeat: no-repeat;
                     background-position: center;
                     background-size: cover;
@@ -42,7 +44,7 @@
                 padding-top: 30px;
 
                 .job {
-                    color: #767676;
+                    //color: #767676;
                     font-size: 15px;
                     font-weight: 500;
                     margin-bottom: 25px;
@@ -78,6 +80,7 @@
 
 @media only screen and (min-width: 768px) {
     .home-page {
+        height: 100vh;
         padding-left: 300px;
         padding-top: 0;
 

@@ -7,10 +7,6 @@
             padding-bottom: 10px;
         }
 
-        .img-wrap {
-
-        }
-
         .title {
             font-size: 23px;
             font-weight: 700;
@@ -36,15 +32,27 @@
                 text-decoration: underline;
             }
         }
+
+
     }
 }
 
-@media only screen and (min-width: 768px){
+@media only screen and (min-width: 768px) {
     .portfolio-modal {
         width: calc(100vw - 400px) !important;
 
         .ant-modal-content {
             padding: 50px;
+
+            .website-images {
+                display: flex;
+                justify-content: space-between;
+
+                img {
+                    margin: 10px;
+                    width: 50%;
+                }
+            }
         }
     }
 }

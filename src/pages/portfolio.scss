@@ -88,28 +88,28 @@
 
                         .inner {
                             height: 430px;
+                            padding-top: 20px;
 
                             a {
                                 .details {
                                     padding: 15px;
                                 }
-    
+
                                 .image-wrap {
                                     background-color: #f8f8f8;
                                     margin: auto;
-                                    padding: 20px 0;
                                     width: 88%;
                                     transition-property: all;
                                     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
                                     transition-duration: 300ms;
-    
+
                                     .image {
                                         border-radius: 12px;
                                         filter: grayscale(100%);
                                     }
                                 }
                             }
-                            
+
                         }
 
                         &:hover,

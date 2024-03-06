@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Modal } from 'antd';
 import PortfolioModal from "../components/portfolioModal";
 import "./portfolio.scss";
-import msImage from "../images/millionSpaces.png";
 import { PROJECTS } from "../components/data";
-import goldenGateImage from "../images/goldenGate.PNG";
+import img_millionSpaces from "../images/millionSpaces.png";
+import img_goldenGate from "../images/goldenGate.PNG";
 
 function Portfolio() {
 
@@ -38,7 +38,7 @@ function Portfolio() {
                                         <a>
                                             <div className="image-wrap">
                                                 <div className="image"
-                                                    style={{ backgroundImage: `url(${msImage})` }}>
+                                                    style={{ backgroundImage: `url(${data.image})` }}>
                                                 </div>
                                             </div>
                                             <div className="details">

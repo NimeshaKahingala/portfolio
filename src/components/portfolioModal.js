@@ -1,6 +1,9 @@
 import React from 'react';
 import { PROJECTS } from "../components/data";
 import "./portfolioModal.scss";
+import img_millionSpaces from "../images/millionSpaces.png";
+import img_goldenGate from "../images/goldenGate.PNG";
+
 // import * as iconSrc from '../images';
 
 

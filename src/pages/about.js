@@ -56,19 +56,18 @@ function About() {
             </div>
             <div className="skill-section">
                 <div className="container">
+                    <div className="left">
                     <h3 className="sub-title">Programming Skills</h3>
-                    <div class="progress">
-                        <ProgressBar skill="HTML" number="95" />
-                        <ProgressBar skill="CSS" number="95" />
-                        <ProgressBar skill="JavaScript" number="85" />
-                        <ProgressBar skill="React" number="80" />
-                    </div>
-                    <h3 className="sub-title">Technical Skills</h3>
-                    <div class="progress">
-                        <ProgressBar skill="Git" number="90" />
-                        <ProgressBar skill="CSS" number="95" />
-                        <ProgressBar skill="JavaScript" number="85" />
-                        <ProgressBar skill="React" number="80" />
+                        <div class="progress">
+                            <ProgressBar skill="HTML" number="95" />
+                            <ProgressBar skill="CSS" number="95" />
+                            <ProgressBar skill="JavaScript" number="85" />
+                            <ProgressBar skill="React" number="80" />
+                            <ProgressBar skill="Git" number="90" />
+                            <ProgressBar skill="Bootstrap" number="95" />
+                            <ProgressBar skill="jQuery" number="70" />
+                            <ProgressBar skill="Tailwind CSS" number="90" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -92,8 +91,8 @@ function About() {
                 </div>
             </div>
             <div className="experience-education-section">
-                <div className="left">
-                    <div className="container">
+                <div className="container">
+                    <div className="left">
                         <h3 className="sub-title">Experience</h3>
                         <div className="content">
                             <ul>
@@ -118,9 +117,7 @@ function About() {
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div className="right">
-                    <div className="container">
+                    <div className="right">
                         <h3 className="sub-title">Education</h3>
                         <div className="content">
                             <ul>

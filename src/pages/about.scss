@@ -95,6 +95,10 @@
     }
 
     .experience-education-section {
+        .left {
+            margin-bottom: 40px;
+        }
+
         ul {
             position: relative;
             display: inline-block;
@@ -129,7 +133,6 @@
                         padding: 8px 27px;
                         margin-right: 20px;
                         white-space: nowrap;
-                        width: 50%;
                     }
                 }
 
@@ -208,7 +211,7 @@
 
 @media only screen and (min-width: 768px) {
     .about-page {
-        padding-left: 400px;
+        padding-left: 300px;
 
         .about-section {
             .image {
@@ -225,13 +228,46 @@
         .experience-education-section {
             display: flex;
 
-            .left {
-                width: 50%;
-            }
+            .container {
+                display: flex;
+                .left {
+                    width: 50%;
+                }
+    
+                .right {
+                    width: 50%;
+                }
 
-            .right {
-                width: 50%;
+                ul {
+                    li {
+                        .list-inner {
+                            .place {
+                                width: 60%;
+                            }
+                        }
+                    }
+                }
             }
         }
+
+        .skill-section {
+            .container {
+                .progress {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+
+                    .progress-inner {
+                        width: 46%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width:1600px) {
+    .about-page {
+        padding-left: 400px;
     }
 }

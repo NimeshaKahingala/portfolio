@@ -57,7 +57,7 @@ function About() {
             <div className="skill-section">
                 <div className="container">
                     <div className="left">
-                    <h3 className="sub-title">Programming Skills</h3>
+                        <h3 className="sub-title">Programming Skills</h3>
                         <div class="progress">
                             <ProgressBar skill="HTML" number="95" />
                             <ProgressBar skill="CSS" number="95" />
@@ -123,10 +123,19 @@ function About() {
                             <ul>
                                 <li>
                                     <div className="list-inner">
+                                        <div className="time">2023 - 2024</div>
+                                        <div className="place">
+                                            <h3>Meta Front-End Developer</h3>
+                                            <span>Meta</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="list-inner">
                                         <div className="time">2016 - 2020</div>
                                         <div className="place">
-                                            <h3>Universityof Colombo School of Computing</h3>
-                                            <span>Bachelor Degree</span>
+                                            <h3>Bachelor of Science in Information Systems</h3>
+                                            <span>University of Colombo School of Computing</span>
                                         </div>
                                     </div>
                                 </li>

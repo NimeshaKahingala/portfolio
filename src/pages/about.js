@@ -30,14 +30,6 @@ function About() {
                                 <span className="details">nimesha.isholi94@gmail.com</span>
                             </li>
                             <li>
-                                <span className="info">Address</span>
-                                <span className="details">2020 Eldridge pkwy, 1404, Houston, Texas 77077</span>
-                            </li>
-                            <li>
-                                <span className="info">Phone</span>
-                                <span className="details">+1(832) 546-7730</span>
-                            </li>
-                            <li>
                                 <span className="info">Study</span>
                                 <span className="details">University of Colombo School of Computing</span>
                             </li>

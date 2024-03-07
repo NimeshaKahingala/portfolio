@@ -1,5 +1,10 @@
 .portfolio-modal {
+    color: #130f49;
     font-family: Montserrat, sans-serif;
+
+    .ant-modal-content {
+        padding-top: 45px;
+    }
 
     .modal-wrap {
         .description {
@@ -25,6 +30,7 @@
 
         .url {
             font-weight: 500;
+            padding-top: 10px;
 
             .link {
                 color: #286fd6;
@@ -33,6 +39,13 @@
             }
         }
 
+        .website-images {
+            padding: 30px 0;
+
+            img {
+                padding-bottom: 25px;
+            }
+        }
 
     }
 }

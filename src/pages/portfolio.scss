@@ -1,6 +1,7 @@
 .portfolio-page {
-   // background-color: #f8f8f8;
-   background-color: #e9f9ff;
+    // background-color: #f8f8f8;
+    background-color: #e9f9ff;
+    color: #130f49;
     font-family: Montserrat, sans-serif;
     padding-top: 60px;
     text-align: left;
@@ -29,7 +30,7 @@
 
                             .image-wrap {
                                 .image {
-                                    background-size: cover;
+                                    background-size: contain;
                                     background-repeat: no-repeat;
                                     background-position-x: center;
                                     min-height: 232px;
@@ -107,7 +108,7 @@
 
                                     .image {
                                         border-radius: 12px;
-                                      //  filter: grayscale(100%);
+                                        //  filter: grayscale(100%);
                                     }
                                 }
                             }

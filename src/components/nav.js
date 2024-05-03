@@ -5,7 +5,7 @@ import './nav.scss';
 function Nav(props) {
 
     const btnOnClick = () => {
-        props.setIsMenuActive(false)
+        props.setIsMenuActive(false);
     }
 
     return <>

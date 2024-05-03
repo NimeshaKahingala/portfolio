@@ -19,7 +19,7 @@ function Header() {
             </div>
             <div className="header desktop">
                 desktop
-                <Nav />
+                <Nav setIsMenuActive={setIsMenuActive} isMenuActive={isMenuActive}/>
             </div>
         </>
     )

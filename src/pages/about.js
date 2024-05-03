@@ -115,6 +115,15 @@ function About() {
                             <ul>
                                 <li>
                                     <div className="list-inner">
+                                        <div className="time">2024 - 2027</div>
+                                        <div className="place">
+                                            <h3>AWS Certified Cloud Practitioner</h3>
+                                            <span>AWS (Amazon Web Services)</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="list-inner">
                                         <div className="time">2023 - 2024</div>
                                         <div className="place">
                                             <h3>Meta Front-End Developer</h3>

@@ -26,7 +26,7 @@ function Contact() {
                             </a>
                         </li>
                         <li>
-                            <a href="https://medium.com/@NimeshaKahingala">
+                            <a href="https://medium.com/@NimeshaKahingala" target="_blank">
                                 <img className="icon" src={mediumIcon}></img>
                             </a>
                         </li>

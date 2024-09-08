@@ -16,23 +16,23 @@ function Contact() {
                     <ul>
                         <li>
                             <a href="https://www.facebook.com/Nimesha.Kahingala" target="_blank">
-                                <img className="icon" src={fbIcon}></img>
+                                <img className="icon" src={fbIcon} alt="facebook icon"></img>
 
                             </a>
                         </li>
                         <li>
                             <a href="https://www.linkedin.com/in/nimesha-kahingala/" target="_blank">
-                                <img className="icon" src={linkedinIcon}></img>
+                                <img className="icon" src={linkedinIcon} alt="linkedin icon"></img>
                             </a>
                         </li>
                         <li>
                             <a href="https://medium.com/@NimeshaKahingala" target="_blank">
-                                <img className="icon" src={mediumIcon}></img>
+                                <img className="icon" src={mediumIcon} alt="medium icon"></img>
                             </a>
                         </li>
                         <li>
                             <a href="mailto:nimesha.isholi94@gmail.com">
-                                <img className="icon" src={emailIcon}></img>
+                                <img className="icon" src={emailIcon} alt="email icon"></img>
                             </a>
                         </li>
                     </ul>

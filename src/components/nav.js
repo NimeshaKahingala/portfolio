@@ -15,6 +15,7 @@ function Nav(props) {
                     <li><Link to="/" onClick={btnOnClick}>Home</Link></li>
                     <li><Link to="/about" onClick={btnOnClick}>About</Link></li>
                     <li><Link to="/portfolio" onClick={btnOnClick}>Portfolio</Link></li>
+                    <li><Link to="/blog" onClick={btnOnClick}>Blog</Link></li>
                     <li><Link to="/contact" onClick={btnOnClick}>Contact</Link></li>
                 </ul>
             </div>

@@ -3,8 +3,6 @@ import { Modal } from 'antd';
 import PortfolioModal from "../components/portfolioModal";
 import "./portfolio.scss";
 import { PROJECTS } from "../components/data";
-import img_millionSpaces from "../images/millionSpaces.png";
-import img_goldenGate from "../images/goldenGate.PNG";
 
 function Portfolio() {
 

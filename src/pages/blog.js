@@ -8,7 +8,6 @@ function Blog() {
             <div className="container">
                 <div className="section-name">Blog</div>
                 <h3 className="title">My Articles</h3>
-                <div className="text"></div>
                 <div className="details">
                     <BlogCard/>
                 </div>

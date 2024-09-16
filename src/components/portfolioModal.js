@@ -13,7 +13,7 @@ function PortfolioModal(props) {
                 <h3 className="title">{props.data?.title}</h3>
                 <p className="description">{props.data?.description}</p>
                 <div className="technology">Technologies used : <span>{props.data?.technology}</span></div>
-                <div className="url">Website URL : <a href="https://millionspaces.com/Singapore" target="blank" className="link">millionspaces.com/Singapore</a></div>
+                <div className="url">Website URL : <a href={props.data?.url} target="blank" className="link">{props.data?.url}</a></div>
                 <div className="website-images">
                     {props.data.otherImages.map(function (data) {
                         return (

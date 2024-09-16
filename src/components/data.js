@@ -42,7 +42,7 @@ export const PROJECTS = [{
     title: "1Billion Technology Website",
     image: img_1bt,
     description: "Overhaul and implement the official website of 1Billion Technology, adapting it to new and modern design principles.",
-    url: "",
+    url: "https://1billiontech.com/",
     responsibilities : "Led the front-end development process, transforming complex wireframes and sophisticated designs into dynamic web application interfaces, with a priority on mobile-first design principles to ensure optimal user experience across various devices. Ensured the creation of high-quality, cross-browser compatible, and maintainable code, emphasizing adherence to contemporary web standards and best practices.",
     technology: " HTML, CSS, JavaScript, React, Tailwind CSS",
     otherImages:[img_1bt]

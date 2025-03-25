@@ -7,46 +7,64 @@
     }
 
     .modal-wrap {
-        .description {
-            font-size: 14px;
-            padding-bottom: 10px;
+        .img-wrap {
+            place-self: center;
         }
 
-        .title {
-            font-size: 23px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
+        .modal-content {
+            background-color: rgb(245, 245, 245);
+            padding: 0 50px 50px 50px;
+            
 
-        .technology {
-            font-size: 16px;
-            font-weight: 600;
-            padding-bottom: 6px;
+            .description {
+                font-size: 14px;
+                padding-bottom: 10px;
+            }
 
-            span {
+            .responsibility {
+                font-weight: 500;
+
+                span {
+                    font-weight: 400;
+                }
+            }
+
+            .title {
+                font-size: 23px;
                 font-weight: 700;
+                margin-bottom: 10px;
+                padding-top: 20px;
+            }
+
+            .technology {
+                font-size: 16px;
+                font-weight: 600;
+                padding-bottom: 6px;
+
+                span {
+                    font-weight: 700;
+                }
+            }
+
+            .url {
+                font-weight: 500;
+                padding-top: 10px;
+
+                .link {
+                    color: #286fd6;
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+            }
+
+            .website-images {
+                padding: 30px 0;
+
+                img {
+                    padding-bottom: 25px;
+                }
             }
         }
-
-        .url {
-            font-weight: 500;
-            padding-top: 10px;
-
-            .link {
-                color: #286fd6;
-                cursor: pointer;
-                text-decoration: underline;
-            }
-        }
-
-        .website-images {
-            padding: 30px 0;
-
-            img {
-                padding-bottom: 25px;
-            }
-        }
-
     }
 }
 
@@ -55,15 +73,20 @@
         width: calc(100vw - 400px) !important;
 
         .ant-modal-content {
-            padding: 50px;
+            padding: 0;
 
+            .modal-wrap {
+                .img-wrap {
+                    padding: 50px;
+                }
+            }
             .website-images {
                 display: flex;
                 justify-content: space-between;
 
                 img {
                     margin: 10px;
-                    width: 50%;
+                    width: 48%;
                 }
             }
         }

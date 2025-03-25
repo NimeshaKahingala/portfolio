@@ -1,5 +1,5 @@
 import React from "react";
-import cv from "../images/cv.pdf";
+import cv from "../images/cv2.pdf";
 import "./about.scss";
 import ProgressBar from "../components/progressBar";
 import arrowIcon from "../images/arrow_right.svg";
@@ -56,6 +56,7 @@ function About() {
                             <ProgressBar skill="JavaScript" number="85" />
                             <ProgressBar skill="React" number="80" />
                             <ProgressBar skill="Git" number="90" />
+                            <ProgressBar skill="Vue" number="80" />
                             <ProgressBar skill="Bootstrap" number="95" />
                             <ProgressBar skill="jQuery" number="70" />
                             <ProgressBar skill="Tailwind CSS" number="90" />
@@ -69,8 +70,8 @@ function About() {
                     <div className="skills">
                         <ul>
                             <li><img src={arrowIcon}></img>Languages: HTML5, CSS3, JavaScript (ES6+)</li>
-                            <li><img src={arrowIcon}></img>Frameworks: React, Redux,</li>
-                            <li><img src={arrowIcon}></img>Libraries: Tailwind CSS, Bootstrap, Chakra UI, Material Design, Ant Design, React-md</li>
+                            <li><img src={arrowIcon}></img>Frameworks: React, Redux, Vue, Nuxt</li>
+                            <li><img src={arrowIcon}></img>Libraries: Tailwind CSS, Bootstrap, Chakra UI, Material Design, Ant Design, React-md, D3.js</li>
                             <li><img src={arrowIcon}></img>Preprocessors: SASS, LESS</li>
                             <li><img src={arrowIcon}></img>Version Control: Git, GitHub</li>
                             <li><img src={arrowIcon}></img>Web Design: Responsive Design, Mobile-first Design</li>
@@ -88,6 +89,15 @@ function About() {
                         <h3 className="sub-title">Experience</h3>
                         <div className="content">
                             <ul>
+                            <li>
+                                    <div className="list-inner">
+                                        <div className="time">2024 - Present</div>
+                                        <div className="place">
+                                            <h3>Helpful Engineering</h3>
+                                            <span>Software Engineer (Volunteer)</span>
+                                        </div>
+                                    </div>
+                                </li>
                                 <li>
                                     <div className="list-inner">
                                         <div className="time">2020 - 2023</div>

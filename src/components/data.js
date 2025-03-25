@@ -74,7 +74,7 @@ export const PROJECTS = [{
     title: "Helpful Engineering - Project Data Platform",
     image: img_helpful,
     description: "A work-in-progress open-source platform designed to address broken supply chains during natural disasters. The platform aims to connect makers and manufacturers with those in need, ensuring critical supplies reach affected areas efficiently. By matching demand with supply, this initiative helps save lives and alleviate distress during emergencies.",
-    url: "https://ceyphire.com/",
+    url: "https://github.com/helpfulengineering/project-data-platform-ts",
     responsibilities : "Developed the front-end from scratch using Vue, Nuxt, TypeScript, and Tailwind CSS. Implemented dynamic and interactive data visualizations using D3.js to enhance project insights. Integrated the platform with backend APIs for real-time data updates and improved user interaction.",
     technology: "HTML, CSS, TypeScript, Vue, Nuxt, Tailwind, D3",
     otherImages:[img_helpful2, img_helpful3]

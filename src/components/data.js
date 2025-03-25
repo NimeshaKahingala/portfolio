@@ -10,6 +10,11 @@ import img_banyan1 from "../images/banyan1.PNG";
 import img_sg from "../images/sg.PNG";
 import img_sg1 from "../images/sg1.PNG";
 import img_sg2 from "../images/sg2.PNG";
+import img_ceyphire from "../images/ceyphire.png";
+import img_ceyphire2 from "../images/ceyphire2.png";
+import img_helpful from "../images/helpfulEng.png";
+import img_helpful2 from "../images/helpfulEng2.png";
+import img_helpful3 from "../images/helpfulEng3.jpg";
 
 export const PROJECTS = [{
     title: "MillionSpaces",
@@ -55,5 +60,23 @@ export const PROJECTS = [{
     responsibilities : "Translated wireframes and designs into web application interfaces. Implemented cross-browser compatible, reusable, and maintainable code while adhering to web standards and best practices.",
     technology: "HTML, CSS, JavaScript, React",
     otherImages:[img_banyan,img_banyan1]
+},
+{
+    title: "Ceyphire",
+    image: img_ceyphire,
+    description: "Ceyphire is a natural gemstone jewelry platform that showcases exquisite handcrafted Ceylon sapphires and semi-precious jewelry, blending tradition with contemporary elegance.",
+    url: "https://ceyphire.com/",
+    responsibilities : "Designed and developed a visually appealing and responsive e-commerce platform tailored for showcasing and selling premium gemstone jewelry. Implemented seamless navigation and interactive UI components to enhance the shopping experience. Optimized site performance for smooth browsing. Ensured mobile-friendly design and SEO best practices for increased visibility and accessibility",
+    technology: "HTML, CSS, JavaScript, Vue, Tailwind",
+    otherImages:[img_ceyphire, img_ceyphire2]
+},
+{
+    title: "Helpful Engineering - Project Data Platform",
+    image: img_helpful,
+    description: "A work-in-progress open-source platform designed to address broken supply chains during natural disasters. The platform aims to connect makers and manufacturers with those in need, ensuring critical supplies reach affected areas efficiently. By matching demand with supply, this initiative helps save lives and alleviate distress during emergencies.",
+    url: "https://ceyphire.com/",
+    responsibilities : "Developed the front-end from scratch using Vue, Nuxt, TypeScript, and Tailwind CSS. Implemented dynamic and interactive data visualizations using D3.js to enhance project insights. Integrated the platform with backend APIs for real-time data updates and improved user interaction.",
+    technology: "HTML, CSS, TypeScript, Vue, Nuxt, Tailwind, D3",
+    otherImages:[img_helpful2, img_helpful3]
 }
 ];

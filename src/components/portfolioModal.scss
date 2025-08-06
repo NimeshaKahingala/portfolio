@@ -92,3 +92,52 @@
         }
     }
 }
+
+/* Dark mode styles */
+[data-theme="dark"] {
+    .portfolio-modal {
+        .ant-modal-content {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .modal-wrap {
+            .modal-content {
+                background-color: var(--bg-secondary);
+                color: var(--text-primary);
+
+                .title {
+                    color: var(--text-primary);
+                }
+
+                .description {
+                    color: var(--text-secondary);
+                }
+
+                .responsibility {
+                    color: var(--text-primary);
+
+                    span {
+                        color: var(--text-secondary);
+                    }
+                }
+
+                .technology {
+                    color: var(--text-primary);
+
+                    span {
+                        color: var(--text-secondary);
+                    }
+                }
+
+                .url {
+                    color: var(--text-primary);
+
+                    .link {
+                        color: var(--primary-color);
+                    }
+                }
+            }
+        }
+    }
+}

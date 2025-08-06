@@ -17,13 +17,34 @@ import img_helpful2 from "../images/helpfulEng2.png";
 import img_helpful3 from "../images/helpfulEng3.jpg";
 
 export const PROJECTS = [{
+    title: "E-Commerce Full Stack Platform",
+    image: img_millionSpaces,
+    description: "A complete e-commerce solution built with React frontend, Node.js/Express backend, PostgreSQL database, and Stripe payment integration. Features include user authentication, product management, shopping cart, and order processing.",
+    url: "https://github.com/nimeshakahingala/ecommerce-fullstack",
+    responsibilities: "Developed the entire full-stack application from database design to frontend implementation. Built RESTful APIs, implemented JWT authentication, integrated payment processing, and deployed using Docker containers on AWS.",
+    technology: "React, Node.js, Express, PostgreSQL, JWT, Stripe API, Docker, AWS",
+    otherImages: [img_ms1, img_ms2],
+    isFullStack: true
+},
+{
+    title: "Task Management API & Dashboard",
+    image: img_sg,
+    description: "A comprehensive task management system with REST API backend and React dashboard. Features real-time updates, user roles, project collaboration, and analytics dashboard with data visualization.",
+    url: "https://github.com/nimeshakahingala/task-management-fullstack",
+    responsibilities: "Architected and developed both backend API and frontend dashboard. Implemented real-time features using WebSockets, created role-based access control, and built interactive data visualizations.",
+    technology: "React, Node.js, Express, MongoDB, Socket.io, JWT, D3.js, Chart.js",
+    otherImages: [img_sg1, img_sg2],
+    isFullStack: true
+},
+{
     title: "MillionSpaces",
     image: img_millionSpaces,
     description: "MillionSpaces is an online platform where customers can book their working space according to the facilities provided and also according to the environment they prefer",
     url: "https://millionspaces.com/Singapore",
-    responsibilities : "Oversaw the transformation of design concepts into interactive web interfaces, enhancing the platform's user engagement and functionality. Developed responsive React components, ensuring a consistent user experience across various devices and platforms. Contributed to feature enhancements, refined user input validation processes, and error handling mechanisms. Successfully integrated complex backend APIs, including Google Map API, to augment the platform's capabilities.",
+    responsibilities: "Oversaw the transformation of design concepts into interactive web interfaces, enhancing the platform's user engagement and functionality. Developed responsive React components, ensuring a consistent user experience across various devices and platforms. Contributed to feature enhancements, refined user input validation processes, and error handling mechanisms. Successfully integrated complex backend APIs, including Google Map API, to augment the platform's capabilities.",
     technology: "HTML, CSS, JavaScript, React, Ant Design, Google Map API, JWT",
-    otherImages:[img_ms1,img_ms2]
+    otherImages: [img_ms1, img_ms2],
+    isFullStack: false
 },
 {
     title: "Golden Gate",

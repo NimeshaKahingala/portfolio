@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import cv from "../images/cv2.pdf";
 import "./about.scss";
 import ProgressBar from "../components/progressBar";
@@ -7,156 +8,229 @@ import arrowIcon from "../images/arrow_right.svg";
 function About() {
     return (
         <div className="about-page">
-            <div className="about-section">
+            <Helmet>
+                <title>About Nimesha Kahingala - Full Stack Developer | Experience & Skills</title>
+                <meta name="description" content="Learn about Nimesha Kahingala's journey as a Full Stack Developer. 5+ years experience, Meta certified, AWS certified. University of Colombo graduate specializing in React and Node.js." />
+                <meta name="keywords" content="about full stack developer, Nimesha Kahingala experience, React developer background, Node.js expert skills, web developer education, University of Colombo computing" />
+                <link rel="canonical" href="https://nimeshakahingala.com/about" />
+                <meta property="og:title" content="About Nimesha Kahingala - Full Stack Developer | Experience & Skills" />
+                <meta property="og:description" content="Learn about Nimesha Kahingala's journey as a Full Stack Developer. 5+ years experience, Meta certified, AWS certified. University of Colombo graduate specializing in React and Node.js." />
+                <meta property="og:url" content="https://nimeshakahingala.com/about" />
+            </Helmet>
+            
+            <div className="hero-section">
                 <div className="container">
-                    <div className="section-name">About</div>
-                    <div className="title">About Me</div>
-                    <div className="image"></div>
-                    <div className="about-title">
-                        <h3 className="name">Nimesha Kahingala</h3>
-                        <span className="job-title">Front-End Developer</span>
-                    </div>
-                    <div className="about-text">
-                        <p>
-                            Welcome! I’m Nimesha, a dynamic Front-End Developer with a flair for crafting compelling, user-first digital experiences. Armed with a Meta Front-End Developer Professional Certificate and over three years of hands-on experience, I thrive on utilizing HTML5, CSS3, JavaScript (ES6+), and cutting-edge frameworks like React and Redux to solve complex problems and create intuitive, accessible web applications.
-                        </p>
-                        <p>
-                            My journey has led me across continents, from the vibrant tech hubs of the United States and Singapore to my roots in Sri Lanka, allowing me to cultivate a unique blend of global insights and innovative approaches. Let’s embark on a journey to transform your digital ideas into reality!
-                        </p></div>
-                    <div className="short-info">
-                        <ul>
-                            <li>
-                                <span className="info">Email</span>
-                                <span className="details">nimesha.isholi94@gmail.com</span>
-                            </li>
-                            <li>
-                                <span className="info">Study</span>
-                                <span className="details">University of Colombo School of Computing</span>
-                            </li>
-                            <li>
-                                <span className="info">Degree</span>
-                                <span className="details">Bachelor of Science: Information Systems</span>
-                            </li>
-                            <li>
-                                <span className="info">Freelance</span>
-                                <span className="details">Available</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="btn-cv"><a href={cv} download>Download CV</a></div>
-                </div>
-            </div>
-            <div className="skill-section">
-                <div className="container">
-                    <div className="left">
-                        <h3 className="sub-title">Programming Skills</h3>
-                        <div class="progress">
-                            <ProgressBar skill="HTML" number="95" />
-                            <ProgressBar skill="CSS" number="95" />
-                            <ProgressBar skill="JavaScript" number="85" />
-                            <ProgressBar skill="React" number="80" />
-                            <ProgressBar skill="Git" number="90" />
-                            <ProgressBar skill="Vue" number="80" />
-                            <ProgressBar skill="Bootstrap" number="95" />
-                            <ProgressBar skill="jQuery" number="70" />
-                            <ProgressBar skill="Tailwind CSS" number="90" />
+                    <div className="section-badge">About Me</div>
+                    <div className="hero-content">
+                        <div className="hero-text">
+                            <h1 className="hero-title" itemProp="name">
+                                Building <strong>Digital Solutions</strong>
+                                <span className="title-accent">End-to-End</span>
+                            </h1>
+                            <div className="profile-card">
+                                <div className="profile-image" role="img" aria-label="Nimesha Kahingala professional photo"></div>
+                                <div className="profile-info">
+                                    <h2 className="name" itemProp="name">Nimesha Kahingala</h2>
+                                    <span className="job-title" itemProp="jobTitle">Full Stack Developer</span>
+                                    <p className="bio" itemProp="description">
+                                        Welcome! I'm Nimesha, a dynamic <strong>Full Stack Developer</strong> with expertise in crafting 
+                                        complete <strong>web solutions</strong> from frontend interfaces to backend architectures. With a 
+                                        <strong>Meta Front-End Developer Professional Certificate</strong> and over three years of hands-on 
+                                        experience, I excel at building <strong>scalable web applications</strong> using modern technologies 
+                                        like <strong>React development</strong>, <strong>Node.js backend</strong>, and <strong>AWS cloud platforms</strong>.
+                                    </p>
+                                    <p className="bio">
+                                        My journey spans across continents, from the vibrant tech hubs of the <strong>United States 
+                                        and Singapore</strong> to my roots in <strong>Sri Lanka</strong>, giving me a unique global perspective on 
+                                        solving complex <strong>web development challenges</strong>. Let's transform your ideas into powerful 
+                                        <strong>digital solutions</strong>!
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div className="info-section">
+                <div className="container">
+                    <div className="info-grid">
+                        <div className="info-card">
+                            <div className="info-icon">📧</div>
+                            <div className="info-content">
+                                <span className="info-label">Professional Email</span>
+                                <span className="info-value">nimesha.isholi94@gmail.com</span>
+                            </div>
+                        </div>
+                        <div className="info-card">
+                            <div className="info-icon">🎓</div>
+                            <div className="info-content">
+                                <span className="info-label">Education Background</span>
+                                <span className="info-value"><strong>University of Colombo School of Computing</strong></span>
+                            </div>
+                        </div>
+                        <div className="info-card">
+                            <div className="info-icon">📜</div>
+                            <div className="info-content">
+                                <span className="info-label">Academic Degree</span>
+                                <span className="info-value"><strong>Bachelor of Science: Information Systems</strong></span>
+                            </div>
+                        </div>
+                        <div className="info-card">
+                            <div className="info-icon">💼</div>
+                            <div className="info-content">
+                                <span className="info-label">Current Availability</span>
+                                <span className="info-value"><strong>Open to Full Stack Projects</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="cta-section">
+                        <a href={cv} download className="btn btn-primary" aria-label="Download Nimesha Kahingala's resume PDF">
+                            Download Resume
+                        </a>
+                        <a href="/contact" className="btn btn-secondary" aria-label="Contact Nimesha Kahingala for hiring">
+                            <strong>Hire Full Stack Developer</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div className="skills-section">
+                <div className="container">
+                    <div className="skills-grid">
+                        <div className="skill-category">
+                            <h2 className="category-title">Frontend Development Technologies</h2>
+                            <div className="progress-list">
+                                <ProgressBar skill="React & Redux Development" number="90" />
+                                <ProgressBar skill="JavaScript (ES6+) Programming" number="85" />
+                                <ProgressBar skill="TypeScript Development" number="80" />
+                                <ProgressBar skill="HTML5 & CSS3 Markup" number="95" />
+                                <ProgressBar skill="Tailwind CSS Framework" number="90" />
+                                <ProgressBar skill="Vue.js & Nuxt.js" number="80" />
+                            </div>
+                        </div>
+                        <div className="skill-category">
+                            <h2 className="category-title">Backend Development Technologies</h2>
+                            <div className="progress-list">
+                                <ProgressBar skill="Node.js & Express.js" number="85" />
+                                <ProgressBar skill="REST API Development" number="90" />
+                                <ProgressBar skill="PostgreSQL Database" number="80" />
+                                <ProgressBar skill="MongoDB NoSQL" number="75" />
+                                <ProgressBar skill="Supabase Backend" number="85" />
+                                <ProgressBar skill="JWT Authentication" number="80" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div className="knowledge-section">
                 <div className="container">
-                    <h3 className="sub-title">Knowledge</h3>
-                    <div className="skills">
-                        <ul>
-                            <li><img src={arrowIcon}></img>Languages: HTML5, CSS3, JavaScript (ES6+)</li>
-                            <li><img src={arrowIcon}></img>Frameworks: React, Redux, Vue, Nuxt</li>
-                            <li><img src={arrowIcon}></img>Libraries: Tailwind CSS, Bootstrap, Chakra UI, Material Design, Ant Design, React-md, D3.js</li>
-                            <li><img src={arrowIcon}></img>Preprocessors: SASS, LESS</li>
-                            <li><img src={arrowIcon}></img>Version Control: Git, GitHub</li>
-                            <li><img src={arrowIcon}></img>Web Design: Responsive Design, Mobile-first Design</li>
-                            <li><img src={arrowIcon}></img>Tools & Build Systems: Webpack, Babel, NPM, Yarn</li>
-                            <li><img src={arrowIcon}></img>Layouts: Flexbox, CSS Grid</li>
-                            <li><img src={arrowIcon}></img>Performance: Website Performance Optimization</li>
-                            <li><img src={arrowIcon}></img>Cross-Browser Compatibility & Accessibility</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div className="experience-education-section">
-                <div className="container">
-                    <div className="left">
-                        <h3 className="sub-title">Experience</h3>
-                        <div className="content">
-                            <ul>
-                            <li>
-                                    <div className="list-inner">
-                                        <div className="time">2024 - Present</div>
-                                        <div className="place">
-                                            <h3>Helpful Engineering</h3>
-                                            <span>Software Engineer (Volunteer)</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="list-inner">
-                                        <div className="time">2020 - 2023</div>
-                                        <div className="place">
-                                            <h3>1Billion Technology</h3>
-                                            <span>Software Engineer - UI</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="list-inner">
-                                        <div className="time">2019 - 2020</div>
-                                        <div className="place">
-                                            <h3>eBEYONDS pvt ltd</h3>
-                                            <span>UI/UX Engineer - inten</span>
-                                        </div>
-                                    </div>
-                                </li>
+                    <h2 className="section-title">Technical Expertise & Skills</h2>
+                    <div className="knowledge-grid">
+                        <div className="knowledge-category">
+                            <h3 className="knowledge-title">Frontend Development</h3>
+                            <ul className="knowledge-list">
+                                <li><img src={arrowIcon} alt="Arrow icon" /><strong>React Development</strong>, Redux, Context API</li>
+                                <li><img src={arrowIcon} alt="Arrow icon" /><strong>Vue.js Framework</strong>, Nuxt.js</li>
+                                <li><img src={arrowIcon} alt="Arrow icon" /><strong>JavaScript (ES6+)</strong>, TypeScript</li>
+                                <li><img src={arrowIcon} alt="Arrow icon" /><strong>HTML5 & CSS3</strong>, SASS, LESS</li>
+                                <li><img src={arrowIcon} alt="Arrow icon" /><strong>Tailwind CSS</strong>, Bootstrap, Material-UI</li>
+                                <li><img src={arrowIcon} alt="Arrow icon" /><strong>Responsive Web Design</strong>, Mobile-first</li>
+                            </ul>
+                        </div>
+                        <div className="knowledge-category">
+                            <h3 className="knowledge-title">Backend Development</h3>
+                            <ul className="knowledge-list">
+                                <li><img src={arrowIcon} alt="Arrow icon" /><strong>Node.js Backend</strong>, Express.js</li>
+                                <li><img src={arrowIcon} alt="Arrow icon" /><strong>RESTful API Development</strong>, GraphQL</li>
+                                <li><img src={arrowIcon} alt="Arrow icon" /><strong>PostgreSQL Database</strong>, MongoDB</li>
+                                <li><img src={arrowIcon} alt="Arrow icon" /><strong>Supabase Backend</strong>, Firebase</li>
+                                <li><img src={arrowIcon} alt="Arrow icon" /><strong>JWT Authentication</strong>, OAuth</li>
+                                <li><img src={arrowIcon} alt="Arrow icon" /><strong>Server-side Rendering</strong> (SSR)</li>
+                            </ul>
+                        </div>
+                        <div className="knowledge-category">
+                            <h3 className="knowledge-title">DevOps & Development Tools</h3>
+                            <ul className="knowledge-list">
+                                <li><img src={arrowIcon} alt="Arrow icon" /><strong>Git Version Control</strong>, GitHub</li>
+                                <li><img src={arrowIcon} alt="Arrow icon" /><strong>Webpack & Vite</strong>, Build Tools</li>
+                                <li><img src={arrowIcon} alt="Arrow icon" /><strong>Docker Containerization</strong></li>
+                                <li><img src={arrowIcon} alt="Arrow icon" /><strong>AWS Cloud Services</strong>, Deployment</li>
+                                <li><img src={arrowIcon} alt="Arrow icon" /><strong>CI/CD Pipeline</strong> Setup</li>
+                                <li><img src={arrowIcon} alt="Arrow icon" /><strong>Web Performance Optimization</strong></li>
                             </ul>
                         </div>
                     </div>
-                    <div className="right">
-                        <h3 className="sub-title">Education</h3>
-                        <div className="content">
-                            <ul>
-                                <li>
-                                    <div className="list-inner">
-                                        <div className="time">2024 - 2027</div>
-                                        <div className="place">
-                                            <h3>AWS Certified Cloud Practitioner</h3>
-                                            <span>AWS (Amazon Web Services)</span>
-                                        </div>
+                </div>
+            </div>
+
+            <div className="experience-section">
+                <div className="container">
+                    <div className="timeline-grid">
+                        <div className="timeline-column">
+                            <h2 className="timeline-title">Professional Development Experience</h2>
+                            <div className="timeline">
+                                <div className="timeline-item">
+                                    <div className="timeline-date">2024 - Present</div>
+                                    <div className="timeline-content">
+                                        <h3><strong>Software Engineer</strong> (Volunteer)</h3>
+                                        <span className="company">Helpful Engineering</span>
+                                        <p>Developing <strong>full-stack solutions</strong> for disaster relief platforms using <strong>Vue.js</strong>, <strong>Nuxt.js</strong>, <strong>TypeScript</strong>, and <strong>D3.js</strong> for data visualization.</p>
                                     </div>
-                                </li>
-                                <li>
-                                    <div className="list-inner">
-                                        <div className="time">2023 - 2024</div>
-                                        <div className="place">
-                                            <h3>Meta Front-End Developer</h3>
-                                            <span>Meta</span>
-                                        </div>
+                                </div>
+                                <div className="timeline-item">
+                                    <div className="timeline-date">2020 - 2023</div>
+                                    <div className="timeline-content">
+                                        <h3><strong>Software Engineer - UI</strong></h3>
+                                        <span className="company">1Billion Technology</span>
+                                        <p>Led <strong>frontend development</strong> for multiple client projects, mentored junior developers, and contributed to <strong>full-stack web solutions</strong>.</p>
                                     </div>
-                                </li>
-                                <li>
-                                    <div className="list-inner">
-                                        <div className="time">2016 - 2020</div>
-                                        <div className="place">
-                                            <h3>Bachelor of Science in Information Systems</h3>
-                                            <span>University of Colombo School of Computing</span>
-                                        </div>
+                                </div>
+                                <div className="timeline-item">
+                                    <div className="timeline-date">2019 - 2020</div>
+                                    <div className="timeline-content">
+                                        <h3><strong>UI/UX Engineer</strong> - Intern</h3>
+                                        <span className="company">eBEYONDS pvt ltd</span>
+                                        <p>Developed <strong>responsive web interfaces</strong> and collaborated with design teams to create user-centered <strong>web solutions</strong>.</p>
                                     </div>
-                                </li>
-                            </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="timeline-column">
+                            <h2 className="timeline-title">Education & Professional Certifications</h2>
+                            <div className="timeline">
+                                <div className="timeline-item">
+                                    <div className="timeline-date">2024 - 2027</div>
+                                    <div className="timeline-content">
+                                        <h3><strong>AWS Certified Cloud Practitioner</strong></h3>
+                                        <span className="company">Amazon Web Services</span>
+                                        <p><strong>Cloud computing fundamentals</strong>, <strong>AWS services</strong>, and best practices for <strong>cloud architecture</strong>.</p>
+                                    </div>
+                                </div>
+                                <div className="timeline-item">
+                                    <div className="timeline-date">2023 - 2024</div>
+                                    <div className="timeline-content">
+                                        <h3><strong>Meta Front-End Developer Professional</strong></h3>
+                                        <span className="company">Meta</span>
+                                        <p>Advanced <strong>React development</strong>, <strong>responsive design</strong>, and modern <strong>frontend best practices</strong>.</p>
+                                    </div>
+                                </div>
+                                <div className="timeline-item">
+                                    <div className="timeline-date">2016 - 2020</div>
+                                    <div className="timeline-content">
+                                        <h3><strong>Bachelor of Science</strong></h3>
+                                        <span className="company">University of Colombo School of Computing</span>
+                                        <p><strong>Information Systems</strong> with focus on <strong>software development</strong> and <strong>database management</strong>.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
-};
+    );
+}
 
 export default About;

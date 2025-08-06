@@ -1,5 +1,4 @@
 import React from 'react';
-import { PROJECTS } from "../components/data";
 import "./portfolioModal.scss";
 
 
@@ -9,7 +8,7 @@ function PortfolioModal(props) {
         <>
 
             <div className='modal-wrap'>
-                <div className="img-wrap"><img className="image" src={props.data?.image} alt='website image'></img></div>
+                <div className="img-wrap"><img className="image" src={props.data?.image} alt='Project screenshot'></img></div>
                 <div className='modal-content'>
                     <h3 className="title">{props.data?.title}</h3>
                     <p className="description">{props.data?.description}</p>
@@ -19,7 +18,7 @@ function PortfolioModal(props) {
                     <div className="website-images">
                         {props.data.otherImages.map(function (data) {
                             return (
-                                <img src={data}></img>
+                                <img src={data} alt="Additional project screenshot"></img>
                             )
                         })}
                 </div>

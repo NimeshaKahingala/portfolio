@@ -16,26 +16,27 @@ import img_helpful from "../images/helpfulEng.png";
 import img_helpful2 from "../images/helpfulEng2.png";
 import img_helpful3 from "../images/helpfulEng3.jpg";
 
-export const PROJECTS = [{
-    title: "E-Commerce Full Stack Platform",
-    image: img_millionSpaces,
-    description: "A complete e-commerce solution built with React frontend, Node.js/Express backend, PostgreSQL database, and Stripe payment integration. Features include user authentication, product management, shopping cart, and order processing.",
-    url: "https://github.com/nimeshakahingala/ecommerce-fullstack",
-    responsibilities: "Developed the entire full-stack application from database design to frontend implementation. Built RESTful APIs, implemented JWT authentication, integrated payment processing, and deployed using Docker containers on AWS.",
-    technology: "React, Node.js, Express, PostgreSQL, JWT, Stripe API, Docker, AWS",
-    otherImages: [img_ms1, img_ms2],
-    isFullStack: true
-},
-{
-    title: "Task Management API & Dashboard",
-    image: img_sg,
-    description: "A comprehensive task management system with REST API backend and React dashboard. Features real-time updates, user roles, project collaboration, and analytics dashboard with data visualization.",
-    url: "https://github.com/nimeshakahingala/task-management-fullstack",
-    responsibilities: "Architected and developed both backend API and frontend dashboard. Implemented real-time features using WebSockets, created role-based access control, and built interactive data visualizations.",
-    technology: "React, Node.js, Express, MongoDB, Socket.io, JWT, D3.js, Chart.js",
-    otherImages: [img_sg1, img_sg2],
-    isFullStack: true
-},
+export const PROJECTS = [
+// {
+//     title: "E-Commerce Full Stack Platform",
+//     image: img_millionSpaces,
+//     description: "A complete e-commerce solution built with React frontend, Node.js/Express backend, PostgreSQL database, and Stripe payment integration. Features include user authentication, product management, shopping cart, and order processing.",
+//     url: "https://github.com/nimeshakahingala/ecommerce-fullstack",
+//     responsibilities: "Developed the entire full-stack application from database design to frontend implementation. Built RESTful APIs, implemented JWT authentication, integrated payment processing, and deployed using Docker containers on AWS.",
+//     technology: "React, Node.js, Express, PostgreSQL, JWT, Stripe API, Docker, AWS",
+//     otherImages: [img_ms1, img_ms2],
+//     isFullStack: true
+// },
+// {
+//     title: "Task Management API & Dashboard",
+//     image: img_sg,
+//     description: "A comprehensive task management system with REST API backend and React dashboard. Features real-time updates, user roles, project collaboration, and analytics dashboard with data visualization.",
+//     url: "https://github.com/nimeshakahingala/task-management-fullstack",
+//     responsibilities: "Architected and developed both backend API and frontend dashboard. Implemented real-time features using WebSockets, created role-based access control, and built interactive data visualizations.",
+//     technology: "React, Node.js, Express, MongoDB, Socket.io, JWT, D3.js, Chart.js",
+//     otherImages: [img_sg1, img_sg2],
+//     isFullStack: true
+// },
 {
     title: "MillionSpaces",
     image: img_millionSpaces,
@@ -53,7 +54,8 @@ export const PROJECTS = [{
     url: "https://thegoldengate.uk/",
     responsibilities : "Developed a user-friendly interface, prioritizing accessibility and engagement for the student user base.",
     technology: "HTML, CSS, JavaScript, React",
-    otherImages:[img_goldenGate1,img_goldenGate2]
+    otherImages:[img_goldenGate1,img_goldenGate2],
+    isFullStack: true
 },
 {
     title: "SqaudGurus",
@@ -89,7 +91,8 @@ export const PROJECTS = [{
     url: "https://ceyphire.com/",
     responsibilities : "Designed and developed a visually appealing and responsive e-commerce platform tailored for showcasing and selling premium gemstone jewelry. Implemented seamless navigation and interactive UI components to enhance the shopping experience. Optimized site performance for smooth browsing. Ensured mobile-friendly design and SEO best practices for increased visibility and accessibility",
     technology: "HTML, CSS, JavaScript, Vue, Tailwind",
-    otherImages:[img_ceyphire, img_ceyphire2]
+    otherImages:[img_ceyphire, img_ceyphire2],
+    isFullStack: true
 },
 {
     title: "Helpful Engineering - Project Data Platform",
@@ -98,6 +101,7 @@ export const PROJECTS = [{
     url: "https://github.com/helpfulengineering/project-data-platform-ts",
     responsibilities : "Developed the front-end from scratch using Vue, Nuxt, TypeScript, and Tailwind CSS. Implemented dynamic and interactive data visualizations using D3.js to enhance project insights. Integrated the platform with backend APIs for real-time data updates and improved user interaction.",
     technology: "HTML, CSS, TypeScript, Vue, Nuxt, Tailwind, D3",
-    otherImages:[img_helpful2, img_helpful3]
+    otherImages:[img_helpful2, img_helpful3],
+    isFullStack: true
 }
 ];

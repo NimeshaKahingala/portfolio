@@ -16,21 +16,21 @@ function Home() {
         window.scrollTo(0, 0);
     }, []);
 
-    const scrollToNextSection = () => {
-        const techStackSection = document.querySelector('.hero-visual');
-        if (techStackSection) {
-            techStackSection.scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-            });
-        } else {
-            // Fallback: scroll down by viewport height
-            window.scrollBy({
-                top: window.innerHeight,
-                behavior: 'smooth'
-            });
-        }
-    };
+    // const scrollToNextSection = () => {
+    //     const techStackSection = document.querySelector('.hero-visual');
+    //     if (techStackSection) {
+    //         techStackSection.scrollIntoView({ 
+    //             behavior: 'smooth',
+    //             block: 'start'
+    //         });
+    //     } else {
+    //         // Fallback: scroll down by viewport height
+    //         window.scrollBy({
+    //             top: window.innerHeight,
+    //             behavior: 'smooth'
+    //         });
+    //     }
+    // };
 
     const scrollToPortfolio = () => {
         window.location.href = '/portfolio';

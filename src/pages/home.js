@@ -5,7 +5,7 @@ import linkedinIcon from "../images/linkedin.svg";
 import mediumIcon from "../images/medium.svg";
 import emailIcon from "../images/envelope-solid.svg";
 import './home.scss';
-import FAQ from '../components/FAQ';
+//import FAQ from '../components/FAQ';
 
 function Home() {
     const [isVisible, setIsVisible] = useState(false);
@@ -17,7 +17,7 @@ function Home() {
     }, []);
 
     const scrollToNextSection = () => {
-        const techStackSection = document.querySelector('.tech-stack-section');
+        const techStackSection = document.querySelector('.hero-visual');
         if (techStackSection) {
             techStackSection.scrollIntoView({ 
                 behavior: 'smooth',
@@ -75,13 +75,13 @@ function Home() {
                                     <span className="stat-label">Years <strong>Full Stack Experience</strong></span>
                                 </div>
                                 <div className="stat">
-                                    <span className="stat-number">20+</span>
+                                    <span className="stat-number">10+</span>
                                     <span className="stat-label"><strong>Web Development Projects</strong></span>
                                 </div>
-                                <div className="stat">
+                                {/* <div className="stat">
                                     <span className="stat-number">100%</span>
                                     <span className="stat-label">Client Satisfaction</span>
-                                </div>
+                                </div> */}
                             </div>
                             
                             <div className="certifications-section">
@@ -275,14 +275,14 @@ function Home() {
                 </div>
             </div>
 
-            <FAQ />
+            {/* <FAQ /> */}
 
-            <div className="scroll-indicator">
+            {/* <div className="scroll-indicator">
                 <div className="scroll-arrow" onClick={scrollToNextSection}>
                     <span>Scroll to explore</span>
                     <div className="arrow-down"></div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }

@@ -1,0 +1,155 @@
+---
+import Base from "../layouts/Base.astro";
+import Button from "../components/Button.astro";
+import { site } from "../data/site";
+import { getMediumPosts, MEDIUM_PROFILE } from "../lib/medium";
+
+const posts = await getMediumPosts();
+
+function fmtDate(iso: string): string {
+  if (!iso) return "";
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime())
+    ? ""
+    : d.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
+}
+---
+
+<Base
+  title={`Writing — ${site.name}`}
+  description={`Articles on web development by ${site.name}, published on Medium.`}
+  path="/blog/"
+>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Writing</p>
+      <h1 class="h1 page-title">Notes on building for the web</h1>
+      <p class="body-lg page-intro prose-measure">
+        I write about web development, front-end craft, and the things I learn
+        shipping real projects — published on Medium.
+      </p>
+
+      {
+        posts.length > 0 ? (
+          <ul class="post-grid">
+            {posts.map((post, i) => (
+              <li class="reveal" data-reveal-index={i}>
+                <a class="post-card" href={post.link} target="_blank" rel="noopener noreferrer">
+                  {post.thumbnail && (
+                    <div class="post-thumb">
+                      <img src={post.thumbnail} alt="" loading="lazy" />
+                    </div>
+                  )}
+                  <div class="post-body">
+                    <h2 class="post-title">{post.title}</h2>
+                    <p class="post-meta">
+                      {fmtDate(post.isoDate)}
+                      {post.readingTime ? ` · ${post.readingTime} min read` : ""}
+                    </p>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div class="blog-fallback">
+            <p>
+              My articles live on Medium. Head over to read the latest.
+            </p>
+          </div>
+        )
+      }
+
+      <div class="blog-cta">
+        <Button href={MEDIUM_PROFILE} variant="secondary">
+          Follow on Medium
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+        </Button>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-title {
+    margin: 0.5rem 0 0.75rem;
+  }
+  .page-intro {
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+  }
+  .post-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 720px) {
+    .post-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .post-card:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+    box-shadow: var(--shadow-hover);
+  }
+  .post-thumb {
+    aspect-ratio: 2 / 1;
+    overflow: hidden;
+    background: var(--subtle);
+    border-bottom: 1px solid var(--border);
+  }
+  .post-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .post-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem 1.375rem 1.375rem;
+    flex: 1;
+  }
+  .post-title {
+    font-size: 1.1875rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .post-meta {
+    margin-top: auto;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--faint);
+  }
+  .blog-fallback {
+    padding: 2rem;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-md);
+    color: var(--muted);
+  }
+  .blog-cta {
+    margin-top: 2.5rem;
+  }
+  .blog-cta :global(svg) {
+    width: 16px;
+    height: 16px;
+  }
+</style>

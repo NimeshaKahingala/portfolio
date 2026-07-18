@@ -1,0 +1,111 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+  index?: number;
+}
+const { project, index = 0 } = Astro.props;
+const { title, summary, tech, cover, fullStack } = project.data;
+const href = `/portfolio/${project.id}/`;
+const visibleTech = tech.slice(0, 3);
+const extraTech = tech.length - visibleTech.length;
+---
+
+<a
+  class="card reveal"
+  href={href}
+  data-reveal-index={index}
+  data-tech={tech.join("|")}
+  data-fullstack={fullStack ? "true" : "false"}
+>
+  <div class="card-shot">
+    <Image
+      src={cover}
+      alt={`${title} screenshot`}
+      width={800}
+      height={500}
+      widths={[400, 800, 1000]}
+      sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
+      loading={index < 3 ? "eager" : "lazy"}
+    />
+  </div>
+  <div class="card-body">
+    <h3 class="card-title">{title}</h3>
+    <p class="card-desc">{summary}</p>
+    <div class="chips">
+      {visibleTech.map((t) => <span class="chip">{t}</span>)}
+      {extraTech > 0 && <span class="chip chip-more">+{extraTech}</span>}
+    </div>
+  </div>
+</a>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+    box-shadow: var(--shadow-hover);
+  }
+  .card-shot {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+    background: var(--subtle);
+  }
+  .card-shot :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.4s ease;
+  }
+  .card:hover .card-shot :global(img) {
+    transform: scale(1.03);
+  }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem 1.375rem 1.375rem;
+    flex: 1;
+  }
+  .card-title {
+    font-size: 1.1875rem;
+  }
+  .card-desc {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-top: auto;
+    padding-top: 0.375rem;
+  }
+  .chip {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    padding: 0.1875rem 0.5rem;
+    border-radius: 4px;
+    background: var(--accent-tint);
+    color: var(--accent);
+  }
+  .chip-more {
+    background: transparent;
+    color: var(--faint);
+    border: 1px solid var(--border);
+  }
+</style>

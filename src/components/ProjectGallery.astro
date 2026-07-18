@@ -1,0 +1,213 @@
+---
+import { Image, getImage } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  images: ImageMetadata[];
+  title: string;
+}
+const { images, title } = Astro.props;
+
+// Pre-generate optimized large versions for the lightbox view.
+const large = await Promise.all(
+  images.map((img) => getImage({ src: img, width: 1400, format: "webp" }))
+);
+---
+
+{
+  images.length > 0 && (
+    <section class="gallery" data-gallery>
+      <div class="gallery-grid">
+        {images.map((img, i) => (
+          <button
+            class="gallery-thumb"
+            type="button"
+            data-lightbox-trigger
+            data-index={i}
+            data-full={large[i].src}
+            data-alt={`${title} — image ${i + 1}`}
+            aria-label={`View image ${i + 1} of ${images.length}`}
+          >
+            <Image
+              src={img}
+              alt={`${title} — image ${i + 1}`}
+              width={760}
+              height={475}
+              widths={[380, 760]}
+              sizes="(min-width: 640px) 50vw, 100vw"
+              loading="lazy"
+            />
+          </button>
+        ))}
+      </div>
+
+      <dialog class="lightbox" data-lightbox aria-label="Image viewer">
+        <div class="lightbox-inner">
+          <button class="lb-btn lb-close" type="button" data-lightbox-close aria-label="Close viewer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+          {images.length > 1 && (
+            <button class="lb-btn lb-prev" type="button" data-lightbox-prev aria-label="Previous image">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+            </button>
+          )}
+          <img class="lb-image" data-lightbox-img alt="" />
+          {images.length > 1 && (
+            <button class="lb-btn lb-next" type="button" data-lightbox-next aria-label="Next image">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
+            </button>
+          )}
+        </div>
+      </dialog>
+    </section>
+  )
+}
+
+<style>
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 640px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .gallery-thumb {
+    display: block;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--subtle);
+    cursor: zoom-in;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .gallery-thumb:hover {
+    border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+    transform: translateY(-2px);
+  }
+  .gallery-thumb :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .lightbox {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+  }
+  .lightbox::backdrop {
+    background: color-mix(in srgb, #000 80%, transparent);
+    backdrop-filter: blur(2px);
+  }
+  .lightbox-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    padding: clamp(1rem, 4vw, 3rem);
+  }
+  .lb-image {
+    max-width: min(90vw, 1200px);
+    max-height: 85dvh;
+    width: auto;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 60px rgb(0 0 0 / 0.5);
+  }
+  .lb-btn {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgb(255 255 255 / 0.2);
+    background: rgb(0 0 0 / 0.4);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .lb-btn:hover {
+    background: rgb(0 0 0 / 0.7);
+  }
+  .lb-btn svg {
+    width: 22px;
+    height: 22px;
+  }
+  .lb-close {
+    top: clamp(0.75rem, 2vw, 1.5rem);
+    right: clamp(0.75rem, 2vw, 1.5rem);
+  }
+  .lb-prev {
+    left: clamp(0.5rem, 2vw, 1.5rem);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .lb-next {
+    right: clamp(0.5rem, 2vw, 1.5rem);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+</style>
+
+<script>
+  interface LBState {
+    triggers: HTMLButtonElement[];
+    index: number;
+    dialog: HTMLDialogElement | null;
+    img: HTMLImageElement | null;
+  }
+  const state: LBState = { triggers: [], index: 0, dialog: null, img: null };
+
+  function show(i: number) {
+    if (!state.img || state.triggers.length === 0) return;
+    const n = state.triggers.length;
+    state.index = (i + n) % n;
+    const trig = state.triggers[state.index];
+    state.img.src = trig.dataset.full ?? "";
+    state.img.alt = trig.dataset.alt ?? "";
+  }
+
+  function openFrom(trigger: HTMLButtonElement) {
+    const gallery = trigger.closest("[data-gallery]");
+    if (!gallery) return;
+    state.dialog = gallery.querySelector("[data-lightbox]");
+    state.img = gallery.querySelector("[data-lightbox-img]");
+    state.triggers = Array.from(
+      gallery.querySelectorAll("[data-lightbox-trigger]")
+    );
+    show(Number(trigger.dataset.index) || 0);
+    state.dialog?.showModal();
+  }
+
+  if (!(window as any).__lightboxBound) {
+    (window as any).__lightboxBound = true;
+
+    document.addEventListener("click", (e) => {
+      const t = e.target as HTMLElement;
+      const trigger = t.closest("[data-lightbox-trigger]");
+      if (trigger) return openFrom(trigger as HTMLButtonElement);
+      if (t.closest("[data-lightbox-close]")) return state.dialog?.close();
+      if (t.closest("[data-lightbox-prev]")) return show(state.index - 1);
+      if (t.closest("[data-lightbox-next]")) return show(state.index + 1);
+      // Backdrop click (the dialog element itself).
+      if (t.hasAttribute("data-lightbox")) state.dialog?.close();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!state.dialog?.open) return;
+      if (e.key === "ArrowLeft") show(state.index - 1);
+      else if (e.key === "ArrowRight") show(state.index + 1);
+    });
+  }
+</script>

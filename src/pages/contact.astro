@@ -1,0 +1,186 @@
+---
+import { Icon } from "astro-icon/components";
+import Base from "../layouts/Base.astro";
+import ContactForm from "../components/ContactForm.astro";
+import { site, socials } from "../data/site";
+---
+
+<Base
+  title={`Contact — ${site.name}`}
+  description={`Get in touch with ${site.name} about freelance work, full-time roles, or collaboration.`}
+  path="/contact/"
+>
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="contact-intro">
+        <p class="eyebrow">Contact</p>
+        <h1 class="h1 page-title">Let's talk about your project.</h1>
+        <p class="body-lg contact-pitch">
+          Have something you're building, a role to fill, or just want to say
+          hello? Send a message and I'll reply within a day or two.
+        </p>
+
+        {
+          site.available && (
+            <p class="availability">
+              <span class="dot-live" /> Currently available for new work
+            </p>
+          )
+        }
+
+        <div class="contact-direct">
+          <span class="direct-label">Prefer email?</span>
+          <button class="email-copy" type="button" data-copy={site.email}>
+            <Icon name="lucide:mail" />
+            <span data-copy-text>{site.email}</span>
+          </button>
+        </div>
+
+        <div class="contact-socials">
+          {
+            socials
+              .filter((s) => !s.href.startsWith("mailto:"))
+              .map((s) => (
+                <a
+                  class="contact-social"
+                  href={s.href}
+                  aria-label={s.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon name={s.icon} />
+                </a>
+              ))
+          }
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  @media (min-width: 860px) {
+    .contact-grid {
+      grid-template-columns: 5fr 7fr;
+      gap: 4rem;
+      align-items: start;
+    }
+  }
+  .page-title {
+    margin: 0.5rem 0 1rem;
+    max-width: 14ch;
+  }
+  .contact-pitch {
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+  .availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5625rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+  .dot-live {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--success) 22%, transparent);
+  }
+  .contact-direct {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.75rem;
+  }
+  .direct-label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--faint);
+  }
+  .email-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    align-self: flex-start;
+    font-size: 0.9375rem;
+    color: var(--text);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 0.875rem;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .email-copy:hover {
+    border-color: var(--faint);
+  }
+  .email-copy.copied {
+    border-color: var(--success);
+    color: var(--success);
+  }
+  .email-copy :global(svg) {
+    width: 16px;
+    height: 16px;
+  }
+  .contact-socials {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .contact-social {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--muted);
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .contact-social:hover {
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  }
+  .contact-social :global(svg) {
+    width: 20px;
+    height: 20px;
+  }
+</style>
+
+<script>
+  function initEmailCopy() {
+    const btn = document.querySelector<HTMLButtonElement>("[data-copy]");
+    if (!btn || btn.dataset.bound === "1") return;
+    btn.dataset.bound = "1";
+    const textEl = btn.querySelector<HTMLElement>("[data-copy-text]");
+    const original = textEl?.textContent ?? "";
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy ?? "");
+        btn.classList.add("copied");
+        if (textEl) textEl.textContent = "Copied!";
+        setTimeout(() => {
+          btn.classList.remove("copied");
+          if (textEl) textEl.textContent = original;
+        }, 1600);
+      } catch {
+        window.location.href = `mailto:${btn.dataset.copy}`;
+      }
+    });
+  }
+  document.addEventListener("astro:page-load", initEmailCopy);
+</script>

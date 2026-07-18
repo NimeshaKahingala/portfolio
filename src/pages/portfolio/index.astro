@@ -1,0 +1,156 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { site } from "../../data/site";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const filters = [
+  { label: "All", value: "all" },
+  { label: "React", value: "tech:React" },
+  { label: "Vue", value: "tech:Vue" },
+  { label: "Full Stack", value: "flag:fullstack" },
+];
+---
+
+<Base
+  title={`Work — ${site.name}`}
+  description={`Selected web development projects by ${site.name} — React, Vue, and full-stack builds.`}
+  path="/portfolio/"
+>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Work</p>
+      <h1 class="h1 page-title">Projects I've shipped</h1>
+      <p class="body-lg page-intro prose-measure">
+        A selection of client and open-source work — front-end builds,
+        e-commerce storefronts, and full-stack platforms.
+      </p>
+
+      <div class="filters" role="group" aria-label="Filter projects by technology" data-filters>
+        {
+          filters.map((f, i) => (
+            <button
+              class="filter-chip"
+              type="button"
+              data-filter={f.value}
+              aria-pressed={i === 0 ? "true" : "false"}
+            >
+              {f.label}
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="work-grid" data-grid>
+        {projects.map((p, i) => <ProjectCard project={p} index={i} />)}
+      </div>
+      <p class="no-results" data-no-results hidden>
+        No projects match that filter.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-title {
+    margin: 0.5rem 0 0.75rem;
+  }
+  .page-intro {
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .filter-chip {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    padding: 0.4375rem 0.875rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .filter-chip:hover {
+    color: var(--text);
+    border-color: var(--faint);
+  }
+  .filter-chip[aria-pressed="true"] {
+    color: var(--btn-fg);
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 640px) {
+    .work-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .work-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .no-results {
+    color: var(--muted);
+    padding: 2rem 0;
+  }
+</style>
+
+<script>
+  function initFilters() {
+    const group = document.querySelector<HTMLElement>("[data-filters]");
+    const grid = document.querySelector<HTMLElement>("[data-grid]");
+    const empty = document.querySelector<HTMLElement>("[data-no-results]");
+    if (!group || !grid || group.dataset.bound === "1") return;
+    group.dataset.bound = "1";
+
+    const chips = Array.from(
+      group.querySelectorAll<HTMLButtonElement>(".filter-chip")
+    );
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>(".card"));
+
+    function matches(card: HTMLElement, value: string): boolean {
+      if (value === "all") return true;
+      if (value.startsWith("tech:")) {
+        const t = value.slice(5);
+        return (card.dataset.tech ?? "").split("|").includes(t);
+      }
+      if (value === "flag:fullstack") return card.dataset.fullstack === "true";
+      return true;
+    }
+
+    group.addEventListener("click", (e) => {
+      const chip = (e.target as HTMLElement).closest<HTMLButtonElement>(
+        ".filter-chip"
+      );
+      if (!chip) return;
+      chips.forEach((c) =>
+        c.setAttribute("aria-pressed", c === chip ? "true" : "false")
+      );
+      const value = chip.dataset.filter ?? "all";
+      let shown = 0;
+      cards.forEach((card) => {
+        const ok = matches(card, value);
+        card.style.display = ok ? "" : "none";
+        if (ok) shown++;
+      });
+      if (empty) empty.hidden = shown > 0;
+    });
+  }
+
+  document.addEventListener("astro:page-load", initFilters);
+</script>

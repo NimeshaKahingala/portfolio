@@ -1,0 +1,340 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import Base from "../layouts/Base.astro";
+import Button from "../components/Button.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { site } from "../data/site";
+import { skillCategories } from "../data/skills";
+import { timeline, certifications } from "../data/timeline";
+import profile from "../assets/images/profile.webp";
+
+const facts = [
+  { label: "Based in", value: site.location },
+  { label: "Experience", value: `${site.experienceYears} years` },
+  { label: "Education", value: site.degree },
+  { label: "Email", value: site.email },
+];
+---
+
+<Base
+  title={`About — ${site.name}`}
+  description={`About ${site.name}, a ${site.role} based in ${site.location}, specializing in React, Vue, and Node.js.`}
+  path="/about/"
+>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">About</p>
+      <h1 class="h1 page-title">Full Stack Developer, based in Colombo.</h1>
+
+      <div class="about-grid">
+        <div class="about-photo">
+          <Image
+            src={profile}
+            alt={`${site.name}, ${site.role}`}
+            width={320}
+            height={400}
+            widths={[240, 320, 440]}
+            sizes="(min-width: 760px) 320px, 100vw"
+          />
+        </div>
+        <div class="about-text">
+          {site.bio.map((para) => <p class="body-lg bio-p">{para}</p>)}
+          <dl class="facts">
+            {
+              facts.map((f) => (
+                <div class="fact">
+                  <dt>{f.label}</dt>
+                  <dd>{f.value}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-subtle">
+    <div class="container">
+      <SectionHeading eyebrow="Skills" title="Tools & technologies" />
+      <div class="skills-grid">
+        {
+          skillCategories.map((cat) => (
+            <div class="skill-cat reveal">
+              <p class="eyebrow skill-cat-title">{cat.title}</p>
+              <ul class="skill-list">
+                {cat.skills.map((s) => (
+                  <li class="skill">
+                    <Icon name={s.icon} />
+                    <span>{s.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading eyebrow="Journey" title="Experience & education" />
+      <ol class="timeline">
+        {
+          timeline.map((entry) => (
+            <li class:list={["tl-item", { current: entry.period.includes("Present") }]}>
+              <div class="tl-marker" aria-hidden="true" />
+              <div class="tl-content">
+                <span class="tl-period">{entry.period}</span>
+                <h3 class="tl-role">{entry.role}</h3>
+                <span class="tl-org">{entry.org}</span>
+                <p class="tl-summary">{entry.summary}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section-subtle">
+    <div class="container">
+      <SectionHeading eyebrow="Credentials" title="Certifications" />
+      <ul class="certs">
+        {
+          certifications.map((c) => (
+            <li class="cert">
+              <span class="cert-name">{c.name}</span>
+              <span class="cert-meta">
+                {c.issuer} · {c.year}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container about-cta">
+      <div>
+        <h2 class="h2">Want the full picture?</h2>
+        <p class="about-cta-desc">Grab my résumé, or reach out directly.</p>
+      </div>
+      <div class="about-cta-actions">
+        <Button href={site.resumeUrl} variant="primary">Download résumé</Button>
+        <Button href="/contact/" variant="secondary">Get in touch</Button>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-title {
+    margin: 0.5rem 0 2rem;
+    max-width: 18ch;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  @media (min-width: 760px) {
+    .about-grid {
+      grid-template-columns: 320px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+  }
+  .about-photo {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    max-width: 320px;
+  }
+  .about-photo :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .bio-p {
+    color: var(--muted);
+    max-width: 60ch;
+  }
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 1.5rem;
+    margin: 0.75rem 0 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .fact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .fact dt {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--faint);
+  }
+  .fact dd {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: var(--text);
+    word-break: break-word;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  @media (min-width: 560px) {
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 900px) {
+    .skills-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .skill-cat-title {
+    margin-bottom: 1rem;
+  }
+  .skill-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .skill {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: 0.9375rem;
+    color: var(--text);
+  }
+  .skill :global(svg) {
+    width: 20px;
+    height: 20px;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--border);
+  }
+  .tl-item {
+    position: relative;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+  }
+  .tl-item:last-child {
+    padding-bottom: 0;
+  }
+  .tl-marker {
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--faint);
+  }
+  .tl-item.current .tl-marker {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
+  }
+  .tl-period {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+  }
+  .tl-role {
+    font-size: 1.0625rem;
+    margin-top: 0.25rem;
+  }
+  .tl-org {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  .tl-summary {
+    margin-top: 0.5rem;
+    color: var(--muted);
+    font-size: 0.9375rem;
+    max-width: 60ch;
+  }
+
+  .certs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .cert {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .cert:first-child {
+    border-top: 1px solid var(--border);
+  }
+  .cert-name {
+    font-weight: 500;
+    color: var(--text);
+  }
+  .cert-meta {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--faint);
+  }
+
+  .about-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .about-cta-desc {
+    color: var(--muted);
+    margin-top: 0.375rem;
+  }
+  .about-cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+</style>

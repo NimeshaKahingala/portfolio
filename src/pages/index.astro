@@ -1,29 +1,100 @@
 ---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import Base from "../layouts/Base.astro";
 import Button from "../components/Button.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 import { site } from "../data/site";
+import { featuredTools } from "../data/skills";
+import profile from "../assets/images/profile.webp";
+
+const featured = (await getCollection("projects"))
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
 
 const title = `${site.name} — ${site.role}`;
 ---
 
 <Base title={title} path="/">
+  {/* Hero */}
   <section class="hero">
-    <div class="container hero-inner">
-      <p class="eyebrow">Hi, I'm</p>
-      <h1 class="display hero-name">{site.name}</h1>
-      <p class="hero-role">{site.role}</p>
-      <p class="body-lg hero-desc prose-measure">{site.tagline}</p>
-      {
-        site.available && (
-          <p class="availability">
-            <span class="dot-live" /> Available for projects · {site.location}
-          </p>
-        )
-      }
-      <div class="hero-actions">
-        <Button href="/portfolio/" variant="primary">View work</Button>
-        <Button href="/contact/" variant="secondary">Get in touch</Button>
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <p class="eyebrow">Hi, I'm</p>
+        <h1 class="display hero-name">{site.name}</h1>
+        <p class="hero-role">{site.role}</p>
+        <p class="body-lg hero-desc prose-measure">{site.tagline}</p>
+        {
+          site.available && (
+            <p class="availability">
+              <span class="dot-live" /> Available for projects · {site.location}
+            </p>
+          )
+        }
+        <div class="hero-actions">
+          <Button href="/portfolio/" variant="primary">View work</Button>
+          <Button href="/contact/" variant="secondary">Get in touch</Button>
+        </div>
       </div>
+      <div class="hero-visual">
+        <div class="hero-photo">
+          <Image
+            src={profile}
+            alt={`${site.name}, ${site.role}`}
+            width={360}
+            height={450}
+            widths={[240, 360, 480]}
+            sizes="(min-width: 860px) 360px, 240px"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Selected work */}
+  <section class="section section-subtle">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Selected work"
+        title="Things I've built recently"
+        linkHref="/portfolio/"
+        linkLabel="All projects"
+      />
+      <div class="work-grid">
+        {featured.map((p, i) => <ProjectCard project={p} index={i} />)}
+      </div>
+    </div>
+  </section>
+
+  {/* Tools strip */}
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow reveal tools-eyebrow">Tools I work with</p>
+      <div class="tools reveal">
+        {
+          featuredTools.map((t) => (
+            <span class="tool">
+              <Icon name={t.icon} />
+              <span>{t.name}</span>
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* Closing CTA */}
+  <section class="section section-subtle">
+    <div class="container cta reveal">
+      <h2 class="h2">Have a project in mind?</h2>
+      <p class="cta-desc">
+        I'm open to freelance work and full-time roles. Let's talk about what
+        you're building.
+      </p>
+      <Button href="/contact/" variant="primary">Get in touch</Button>
     </div>
   </section>
 </Base>
@@ -31,7 +102,7 @@ const title = `${site.name} — ${site.role}`;
 <style>
   .hero {
     position: relative;
-    padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+    padding: clamp(3rem, 5vw, 5rem) 0 clamp(3.5rem, 6vw, 5.5rem);
     overflow: hidden;
   }
   .hero::before {
@@ -45,9 +116,19 @@ const title = `${site.name} — ${site.role}`;
     mask-image: linear-gradient(to bottom, #000, transparent 72%);
     pointer-events: none;
   }
-  .hero-inner {
+  .hero-grid {
     position: relative;
     z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  @media (min-width: 860px) {
+    .hero-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+    }
   }
   .eyebrow {
     margin-bottom: 1.25rem;
@@ -86,5 +167,76 @@ const title = `${site.name} — ${site.role}`;
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
+  }
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+  }
+  .hero-photo {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 6%, transparent);
+  }
+  .hero-photo :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 640px) {
+    .work-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 960px) {
+    .work-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .tools-eyebrow {
+    margin-bottom: 1.5rem;
+  }
+  .tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.75rem 2.125rem;
+    align-items: center;
+  }
+  .tool {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    color: var(--faint);
+    transition: color 0.2s ease;
+  }
+  .tool:hover {
+    color: var(--accent);
+  }
+  .tool :global(svg) {
+    width: 26px;
+    height: 26px;
+  }
+  .tool span {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+  }
+
+  .cta {
+    text-align: center;
+  }
+  .cta-desc {
+    color: var(--muted);
+    max-width: 46ch;
+    margin: 0.5rem auto 1.625rem;
   }
 </style>

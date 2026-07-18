@@ -48,6 +48,7 @@ const title = `${site.name} — ${site.role}`;
             widths={[240, 360, 480]}
             sizes="(min-width: 860px) 360px, 240px"
             loading="eager"
+            fetchpriority="high"
           />
         </div>
       </div>
@@ -64,7 +65,7 @@ const title = `${site.name} — ${site.role}`;
         linkLabel="All projects"
       />
       <div class="work-grid">
-        {featured.map((p, i) => <ProjectCard project={p} index={i} />)}
+        {featured.map((p, i) => <ProjectCard project={p} index={i} loading="lazy" />)}
       </div>
     </div>
   </section>

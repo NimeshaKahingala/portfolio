@@ -5,8 +5,11 @@ import type { CollectionEntry } from "astro:content";
 interface Props {
   project: CollectionEntry<"projects">;
   index?: number;
+  /** Override the index-based eager/lazy default — pass "lazy" when the
+   * card sits below a hero that already claims the LCP slot (e.g. Home). */
+  loading?: "eager" | "lazy";
 }
-const { project, index = 0 } = Astro.props;
+const { project, index = 0, loading } = Astro.props;
 const { title, summary, tech, cover, fullStack } = project.data;
 const href = `/portfolio/${project.id}/`;
 const visibleTech = tech.slice(0, 3);
@@ -28,7 +31,7 @@ const extraTech = tech.length - visibleTech.length;
       height={500}
       widths={[400, 800, 1000]}
       sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
-      loading={index < 3 ? "eager" : "lazy"}
+      loading={loading ?? (index < 3 ? "eager" : "lazy")}
     />
   </div>
   <div class="card-body">

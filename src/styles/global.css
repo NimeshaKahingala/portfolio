@@ -199,9 +199,11 @@
 
 /* ------------------------------------------------------------------
    Scroll-reveal (JS adds .is-visible). Respect reduced motion.
+   Hidden state is scoped to html.js (stamped by the inline pre-paint
+   script) so content stays visible by default if JS never runs.
 ------------------------------------------------------------------ */
 @layer components {
-  .reveal {
+  html.js .reveal {
     opacity: 0;
     transform: translateY(16px);
     transition:
@@ -249,7 +251,7 @@
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-  .reveal {
+  html.js .reveal {
     opacity: 1;
     transform: none;
   }

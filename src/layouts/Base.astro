@@ -8,6 +8,11 @@ import { site } from "../data/site";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
+// Preload the two fonts used above the fold on every page (hero heading +
+// body copy) so they're discovered before the CSS parse, not after.
+import interFontUrl from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
+import spaceGroteskFontUrl from "@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url";
+
 interface Props {
   title: string;
   description?: string;
@@ -66,6 +71,8 @@ const personSchema = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" as="font" type="font/woff2" href={interFontUrl} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={spaceGroteskFontUrl} crossorigin />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="apple-touch-icon" href="/favicon.ico" />
 
@@ -95,9 +102,10 @@ const personSchema = {
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- No-flash theme: set before paint. -->
+    <!-- No-flash theme + JS-detected class: both set before paint. -->
     <script is:inline>
       (function () {
+        document.documentElement.classList.add("js");
         try {
           var stored = localStorage.getItem("theme");
           var theme =

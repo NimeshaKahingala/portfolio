@@ -15,6 +15,13 @@ export const site = {
     "Full Stack Developer in Colombo, Sri Lanka, building fast, reliable web applications with React, Vue, Node.js and the cloud.",
   experienceYears: "5+", // pending confirmation
   available: true,
+  resumeUrl: "/resume.pdf",
+  degree: "BSc in Information Systems",
+  university: "University of Colombo School of Computing",
+  bio: [
+    "I'm Nimesha, a Full Stack Developer who builds complete web solutions — from frontend interfaces to backend architecture. I hold a Meta Front-End Developer Professional Certificate and spend most of my time building scalable web applications with React, Vue, Node.js, and the cloud.",
+    "My work has spanned teams and clients across the United States, Singapore, and Sri Lanka, which has given me a global perspective on solving web development problems. I care about accessible interfaces, clean code, and shipping things that hold up in production.",
+  ],
 } as const;
 
 export type NavLink = { label: string; href: string };

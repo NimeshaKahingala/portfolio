@@ -1,0 +1,315 @@
+---
+import { Icon } from "astro-icon/components";
+import { site, navLinks, socials } from "../data/site";
+import ThemeToggle from "./ThemeToggle.astro";
+
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/" ? path === "/" : path === href || path.startsWith(href);
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label={`${site.name}, home`}>
+      <span class="monogram">{site.monogram}</span>
+      <span class="brand-name">{site.name}</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Primary">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={["nav-link", { active: isActive(link.href) }]}
+            aria-current={isActive(link.href) ? "page" : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="header-actions">
+      <ThemeToggle />
+      <button
+        class="menu-btn"
+        data-menu-open
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+  <div class="menu-backdrop" data-menu-backdrop></div>
+  <nav class="menu-panel" aria-label="Mobile">
+    <div class="menu-top">
+      <span class="monogram">{site.monogram}</span>
+      <button class="menu-close" data-menu-close type="button" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </div>
+    <ul class="menu-links">
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={["menu-link", { active: isActive(link.href) }]}
+              aria-current={isActive(link.href) ? "page" : undefined}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="menu-socials">
+      {
+        socials.map((s) => (
+          <a href={s.href} class="menu-social" aria-label={s.label} target={s.href.startsWith("http") ? "_blank" : undefined} rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}>
+            <Icon name={s.icon} />
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+</div>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.25s ease, background-color 0.2s ease;
+  }
+  .site-header.scrolled {
+    border-bottom-color: var(--border);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.0625rem;
+  }
+  .monogram {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-sm);
+    background: var(--accent-tint);
+    color: var(--accent);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+    flex-shrink: 0;
+  }
+  .brand-name {
+    display: none;
+  }
+  @media (min-width: 480px) {
+    .brand-name {
+      display: inline;
+    }
+  }
+
+  .nav-desktop {
+    display: none;
+    align-items: center;
+    gap: 1.75rem;
+  }
+  @media (min-width: 768px) {
+    .nav-desktop {
+      display: flex;
+    }
+  }
+  .nav-link {
+    position: relative;
+    font-size: 0.9375rem;
+    color: var(--muted);
+    padding: 0.25rem 0;
+    transition: color 0.2s ease;
+  }
+  .nav-link:hover {
+    color: var(--text);
+  }
+  .nav-link.active {
+    color: var(--accent);
+  }
+  .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .menu-btn {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .menu-btn:hover {
+    color: var(--text);
+    border-color: var(--faint);
+  }
+  .menu-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+  @media (min-width: 768px) {
+    .menu-btn {
+      display: none;
+    }
+  }
+
+  /* ---- Mobile overlay menu ---- */
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    visibility: hidden;
+  }
+  :global(html.menu-open) .mobile-menu {
+    visibility: visible;
+  }
+  .menu-backdrop {
+    position: absolute;
+    inset: 0;
+    background: color-mix(in srgb, var(--bg) 60%, #000 8%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  :global(html.menu-open) .menu-backdrop {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .menu-panel {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem clamp(1.25rem, 5vw, 2rem) 2rem;
+    background: var(--bg);
+    transform: translateY(-8px);
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  :global(html.menu-open) .menu-panel {
+    transform: none;
+    opacity: 1;
+  }
+  .menu-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+  }
+  .menu-close {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .menu-close svg {
+    width: 22px;
+    height: 22px;
+  }
+  .menu-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-top: 2.5rem;
+  }
+  .menu-link {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.75rem, 1.4rem + 2vw, 2.25rem);
+    color: var(--text);
+    padding: 0.5rem 0;
+  }
+  .menu-link.active {
+    color: var(--accent);
+  }
+  .menu-socials {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .menu-social {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--muted);
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .menu-social:hover {
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  }
+  .menu-social :global(svg) {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .menu-backdrop,
+    .menu-panel {
+      transition: none;
+    }
+  }
+</style>

@@ -1,0 +1,217 @@
+---
+import { ClientRouter } from "astro:transitions";
+import "@fontsource-variable/inter";
+import "@fontsource-variable/space-grotesk";
+import "@fontsource/jetbrains-mono/500.css";
+import "../styles/global.css";
+import { site } from "../data/site";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Path for the canonical URL, e.g. "/about/". Defaults to current path. */
+  path?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = site.description,
+  path,
+  ogImage = "/og-image.jpg",
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(path ?? Astro.url.pathname, site.url).href;
+const ogImageUrl = new URL(ogImage, site.url).href;
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  jobTitle: site.role,
+  description: site.description,
+  url: site.url,
+  email: `mailto:${site.email}`,
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "LK",
+    addressLocality: "Colombo",
+  },
+  sameAs: [
+    "https://www.linkedin.com/in/nimesha-kahingala/",
+    "https://medium.com/@NimeshaKahingala",
+    "https://github.com/nimeshakahingala",
+  ],
+  knowsAbout: [
+    "React",
+    "Vue.js",
+    "Node.js",
+    "TypeScript",
+    "JavaScript",
+    "PostgreSQL",
+    "MongoDB",
+    "AWS",
+    "Full Stack Development",
+    "Web Development",
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/favicon.ico" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="author" content={site.name} />
+
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={`${site.name} — ${site.role}`} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- No-flash theme: set before paint. -->
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
+
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
+    />
+
+    <ClientRouter />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Centralized interaction wiring. Bundled by Astro → runs once and
+      // persists across ClientRouter navigations; all bindings are on
+      // `document`/`window` (which persist) or re-run on `astro:page-load`.
+
+      function initReveals() {
+        const reduce = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+        const els = document.querySelectorAll(".reveal:not(.is-visible)");
+        if (reduce || !("IntersectionObserver" in window)) {
+          els.forEach((el) => el.classList.add("is-visible"));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const el = entry.target as HTMLElement;
+              const idx = Number(el.dataset.revealIndex) || 0;
+              setTimeout(() => el.classList.add("is-visible"), (idx % 4) * 70);
+              io.unobserve(el);
+            });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
+        );
+        els.forEach((el) => io.observe(el));
+      }
+
+      function setHeaderState() {
+        const header = document.querySelector(".site-header");
+        if (header) header.classList.toggle("scrolled", window.scrollY > 8);
+      }
+
+      const root = document.documentElement;
+      function closeMenu() {
+        root.classList.remove("menu-open");
+        const btn = document.querySelector("[data-menu-open]");
+        if (btn) btn.setAttribute("aria-expanded", "false");
+        document.body.style.removeProperty("overflow");
+      }
+      function openMenu() {
+        root.classList.add("menu-open");
+        const btn = document.querySelector("[data-menu-open]");
+        if (btn) btn.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+      }
+
+      // Theme toggle + menu controls via event delegation.
+      document.addEventListener("click", (e) => {
+        const target = e.target as HTMLElement;
+        if (target.closest("[data-theme-toggle]")) {
+          const current =
+            root.getAttribute("data-theme") ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          const next = current === "dark" ? "light" : "dark";
+          root.setAttribute("data-theme", next);
+          try {
+            localStorage.setItem("theme", next);
+          } catch (e) {}
+          return;
+        }
+        if (target.closest("[data-menu-open]")) return openMenu();
+        if (
+          target.closest("[data-menu-close]") ||
+          target.hasAttribute("data-menu-backdrop")
+        )
+          return closeMenu();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMenu();
+      });
+
+      window.addEventListener("scroll", setHeaderState, { passive: true });
+
+      // Fires on initial load and after every ClientRouter navigation.
+      document.addEventListener("astro:page-load", () => {
+        initReveals();
+        setHeaderState();
+      });
+      // Close the menu when a navigation starts.
+      document.addEventListener("astro:before-preparation", closeMenu);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+---
+interface Props {
+  /** Element tag to render. Defaults to div. */
+  as?: keyof HTMLElementTagNameMap;
+  /** Stagger position (0–3) for grouped reveals. */
+  index?: number;
+  class?: string;
+}
+
+const { as: Tag = "div", index = 0, class: className } = Astro.props;
+const classes = ["reveal", className].filter(Boolean).join(" ");
+---
+
+<Tag class={classes} data-reveal-index={index}>
+  <slot />
+</Tag>

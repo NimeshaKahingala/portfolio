@@ -211,6 +211,20 @@ const personSchema = {
 
       window.addEventListener("scroll", setHeaderState, { passive: true });
 
+      // ClientRouter swaps in the incoming document's <html>, which has no
+      // data-theme or `.js` class (both are set at runtime, not served).
+      // Re-apply them after the swap but before paint so the theme doesn't
+      // flash back to the OS preference and the reveal styles keep working.
+      document.addEventListener("astro:after-swap", () => {
+        const el = document.documentElement;
+        el.classList.add("js");
+        try {
+          el.setAttribute("data-theme", localStorage.getItem("theme") || "light");
+        } catch (e) {
+          el.setAttribute("data-theme", "light");
+        }
+      });
+
       // Fires on initial load and after every ClientRouter navigation.
       document.addEventListener("astro:page-load", () => {
         initReveals();

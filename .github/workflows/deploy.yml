@@ -1,0 +1,48 @@
+name: Deploy
+
+# Builds on every push and PR to main; deploys to Cloudflare Workers only on
+# pushes to main. Requires one repo secret: CLOUDFLARE_API_TOKEN (see
+# docs/CICD.md). The account id comes from wrangler.jsonc.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Cancel superseded runs on the same ref (e.g. rapid pushes).
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      # Deploy only on direct pushes to main — never on pull requests.
+      # Uses the wrangler pinned in devDependencies; account id is in
+      # wrangler.jsonc, so only the API token is needed.
+      - name: Deploy to Cloudflare Workers
+        if: github.event_name == 'push'
+        run: npx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

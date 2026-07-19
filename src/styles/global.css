@@ -210,7 +210,9 @@
       opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
       transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .reveal.is-visible {
+  /* Must out-specify `html.js .reveal` (0,2,1), otherwise is-visible
+     elements stay opacity:0 and the content never appears. */
+  html.js .reveal.is-visible {
     opacity: 1;
     transform: none;
   }

@@ -10,19 +10,18 @@ Legend — **[manual]** you do it in the dashboard · **[code]** I can do it on 
 
 ---
 
-## 1. Connect Workers Builds (git-push CI) — [manual] · recommended
+## 1. CI/CD — GitHub Actions — [manual: add 1 secret]
 
-Until this is connected, every deploy is manual (`npm run deploy`). Connecting it restores
-the Pages-style "push to `main` → auto-deploy" flow, plus preview URLs for branches.
+**Done in code:** a GitHub Actions workflow ([.github/workflows/deploy.yml](../.github/workflows/deploy.yml))
+now builds on every push/PR to `main` and deploys to Cloudflare Workers on pushes to `main`.
+See [CICD.md](CICD.md).
 
-1. Dashboard → **Workers & Pages** → `nimesha-portfolio` → **Settings** → **Build**.
-2. **Connect** GitHub repo `NimeshaKahingala/portfolio` (the GitHub app is already installed
-   from the old Pages project, so this is a few clicks).
-3. Build command: `npm run build` · Deploy command: `npx wrangler deploy` · Production branch: `main`.
-4. Enable **non-production branch builds** for preview URLs (`preview_urls: true` is already
-   set in `wrangler.jsonc`).
+**Remaining manual step:** create a Cloudflare API token and add it as the GitHub repo secret
+`CLOUDFLARE_API_TOKEN` (full steps in [CICD.md](CICD.md) §"One-time setup"). Until then, the
+deploy step fails; local `npm run deploy` still works.
 
-**Why manual:** GitHub app authorization is dashboard-only.
+> Chose GitHub Actions over Cloudflare **Workers Builds** — do not enable both, or every push
+> double-deploys.
 
 ---
 

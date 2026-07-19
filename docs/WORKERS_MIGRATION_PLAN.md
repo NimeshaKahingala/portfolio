@@ -1,10 +1,33 @@
 # Pages → Workers Migration Plan (nimesha.dev)
 
-> **Status: PLAN ONLY — not implemented.** Audited live against the Cloudflare account
-> (`dfcfd8b8…`) via MCP on 2026-07-18 and verified against the official
+> **Status: ✅ MIGRATED (2026-07-18).** The site now runs as a **Cloudflare Worker with
+> static assets** on **nimesha.dev**. Executed via wrangler + Cloudflare MCP and verified
+> live in-browser. Two items remain and are **manual** (see §6): connecting Workers Builds
+> for git-push CI, and the `www` → apex redirect (the MCP token lacked Rulesets/Page Rules
+> permission, so it couldn't be created via API).
+>
+> Verified against the official
 > [Pages→Workers migration guide](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/).
-> Goal: serve the site as a **Cloudflare Worker with static assets** (the recommended
-> platform going forward), on the domain **nimesha.dev**, replacing the current Pages setup.
+
+## Completion log
+
+| Phase | Status | Notes |
+|---|---|---|
+| W1 — code changes | ✅ done | Domain fixed to `nimesha.dev`; `wrangler.jsonc`, `wrangler@4`, deploy scripts added; commit `7462f17` |
+| W2 — first deploy + verify | ✅ done | Worker `nimesha-portfolio` live at `nimesha-portfolio.nimesha-isholi94.workers.dev`; Chrome audit clean (0 console errors, trailing-slash + 404 + assets OK) |
+| W3 — domain cutover | ✅ done | `nimesha.dev` detached from Pages, apex CNAME removed, attached as Workers custom domain (cert `d941dab5…`); serving 200 |
+| Light-theme default | ✅ done | 1-line no-flash change; redeployed; verified fresh-visitor = light; commit `41c7dbf` |
+| Backup + merge | ✅ done | Old `main` preserved at branch `backup-main-pre-revamp` (`27db228`, pushed); `revamp` fast-forwarded into `main` and pushed |
+| W5 — delete Pages project | ✅ done | `portfolio` Pages project deleted (`portfolio-b0m.pages.dev` gone) |
+| W4 — Workers Builds CI | ⏳ manual | Dashboard/GitHub OAuth — see §6 |
+| `www` → apex redirect | ⏳ manual | MCP token lacks Rulesets/Page Rules scope; DNS record was rolled back to avoid a live 522 — see §6 |
+
+---
+
+### Original plan (for reference)
+
+Goal: serve the site as a **Cloudflare Worker with static assets** (the recommended
+platform going forward), on the domain **nimesha.dev**, replacing the current Pages setup.
 
 ---
 
@@ -122,22 +145,45 @@ No `functions/` dir and no `_worker.js` exist → nothing else to convert.
 
 ---
 
-## 4. Manual steps required from you (summary)
+## 6. Remaining manual steps (dashboard)
 
-| # | Step | Phase | Why manual |
-|---|---|---|---|
-| 1 | `npx wrangler login` in the project dir | W2 | Browser OAuth — I can't authenticate as you |
-| 2 | Pick/confirm the `*.workers.dev` subdomain name if prompted | W2 | Account-level naming choice |
-| 3 | Connect GitHub repo in Workers Builds + enable branch builds | W4 | GitHub app authorization is dashboard-only |
-| 4 | Say "go" before I delete the Pages project | W5 | Destructive |
-| 5 | (Optional) enable Web Analytics for nimesha.dev | W5 | Dashboard-only toggle |
-| 6 | (Optional) decide on `www.` redirect | W5 | Preference |
+Everything code/deploy/DNS-related is done. Two items are left because they need dashboard
+access the MCP token doesn't have:
 
-Everything else — code changes, deploys (post-login), domain detach/attach, DNS record
-cleanup, Pages project deletion — I can execute via wrangler + the Cloudflare MCP.
-*(Note: the MCP token was denied on the Email Routing read endpoint during the audit; if a
-cutover call hits a similar scope limit, that step becomes a 2-minute dashboard action and
-I'll flag it.)*
+### 6.1 Connect Workers Builds (git-push CI) — recommended
+
+Until this is set up, deploys are manual via `npm run deploy`. To restore the Pages-style
+"push to deploy" flow:
+
+1. Dashboard → **Workers & Pages** → `nimesha-portfolio` → **Settings** → **Build**.
+2. **Connect** GitHub repo `NimeshaKahingala/portfolio` (the GitHub app is already installed
+   from the old Pages project — a few clicks).
+3. Build command `npm run build`, deploy command `npx wrangler deploy`, production branch `main`.
+4. Enable **non-production branch builds** for preview URLs (`preview_urls: true` is already
+   set in `wrangler.jsonc`).
+
+### 6.2 `www` → apex 301 redirect
+
+The `www` DNS record + redirect could not be created via API (token lacks Rulesets and Page
+Rules permission — it returned auth errors). The DNS record I briefly added was rolled back
+so `www` isn't left serving a 522. To finish it in the dashboard (~2 min):
+
+1. **Rules** → **Redirect Rules** → **Create rule**.
+   - When incoming requests match: `Hostname` `equals` `www.nimesha.dev`
+   - Then: **Dynamic redirect** → Type `301`, Expression
+     `concat("https://nimesha.dev", http.request.uri.path)`, **Preserve query string** on.
+2. Cloudflare will prompt to add the proxied `www` DNS record automatically (or add a
+   proxied `CNAME www → nimesha.dev` manually first). The Redirect Rule intercepts at the
+   edge, so the CNAME target is irrelevant.
+
+*(Note: every page already emits `<link rel="canonical" href="https://nimesha.dev/…">`, so
+search engines consolidate on the apex even without this redirect — it's a nicety, not urgent.)*
+
+### 6.3 (Optional) Web Analytics
+
+The old Pages project auto-injected a Web Analytics beacon that died with it. To re-enable:
+Dashboard → **Analytics & Logs** → **Web Analytics** → add `nimesha.dev` (free; auto-inject
+works since the zone is proxied). Historical Pages analytics data is not carried over.
 
 ---
 

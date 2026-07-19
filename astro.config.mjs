@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build
 export default defineConfig({
-  site: 'https://nimeshakahingala.com',
+  site: 'https://nimesha.dev',
   trailingSlash: 'always',
   integrations: [sitemap(), icon()],
   vite: {

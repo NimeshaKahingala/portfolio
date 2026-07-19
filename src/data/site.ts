@@ -8,7 +8,7 @@ export const site = {
   role: "Full Stack Developer",
   location: "Colombo, Sri Lanka",
   email: "nimesha.isholi94@gmail.com",
-  url: "https://nimeshakahingala.com",
+  url: "https://nimesha.dev",
   tagline:
     "I build fast, reliable web applications end to end — from the database schema to the last pixel of the interface.",
   description:

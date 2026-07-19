@@ -1,0 +1,18 @@
+// Cloudflare Workers config — static-assets-only Worker serving the Astro build.
+// See docs/WORKERS_MIGRATION_PLAN.md.
+{
+  "name": "nimesha-portfolio",
+  "account_id": "dfcfd8b8dc03df1fa279a33cda595b36",
+  "compatibility_date": "2026-07-18",
+  "assets": {
+    "directory": "./dist",
+    // dist/404.html exists — Pages inferred this, Workers wants it explicit.
+    "not_found_handling": "404-page"
+    // html_handling defaults to "auto-trailing-slash", matching Astro's
+    // trailingSlash: "always" directory-style output.
+  },
+  "preview_urls": true,
+  "observability": {
+    "enabled": true
+  }
+}
